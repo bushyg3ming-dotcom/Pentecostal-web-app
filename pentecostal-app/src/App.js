@@ -265,7 +265,9 @@ Email: pentecostalholychurch@gmail.com
                 <h3>🌸 Spring Youth Conference</h3>
                 <p className="event-date">September 2026</p>
                 <p>Mark your calendars for our annual youth conference with guest speakers, workshops, and powerful worship!</p>
-                <button className="register-btn">Learn More</button>
+                <button className="register-btn" onClick={() => {
+                  alert('Thank you for your interest! More details about the Spring Youth Conference will be available soon. Stay tuned for registration information!');
+                }}>Learn More</button>
               </div>
             </div>
           </section>
