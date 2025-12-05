@@ -1480,7 +1480,11 @@ Email: pentecostalholychurch@gmail.com
                           </div>
                           <div className="form-group">
                             <label>Service Notes</label>
-                            <textarea rows="3" placeholder="Brief description of today's service..."></textarea>
+                            <textarea
+                              rows="3"
+                              placeholder="Brief description of today's service..."
+                              style={{width: '100%', resize: 'none'}}
+                            ></textarea>
                           </div>
                           <button type="submit" className="update-btn">💾 Update Service Info</button>
                         </form>
@@ -1988,6 +1992,7 @@ Email: pentecostalholychurch@gmail.com
                           required
                           placeholder="Share what's on your heart. Your pastor will respond with care and confidentiality."
                           rows="6"
+                          style={{width: '100%', resize: 'none'}}
                         />
                       </div>
 
@@ -2080,10 +2085,4 @@ Email: pentecostalholychurch@gmail.com
         {renderPage()}
       </main>
       <footer>
-        <p>&copy; 2025 Pentecostal Holiness Church. All rights reserved.</p>
-      </footer>
-    </div>
-  );
-}
-
-export default App;
+        <p>&copy; 2025 Pentecostal Holiness Church. All rights reserved.
