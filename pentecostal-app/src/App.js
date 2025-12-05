@@ -394,7 +394,7 @@ Email: pentecostalholychurch@gmail.com
                         "Please share your prayer request. What would you like us to pray for?" :
                         "Share your question or situation. Our pastor will provide biblical guidance and support."
                       }
-                      rows="6"
+                      rows="10"
                     />
                   </div>
 
