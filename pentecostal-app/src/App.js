@@ -1808,7 +1808,7 @@ Email: pentecostalholychurch@gmail.com
             <li><a href="#home" onClick={() => navigateTo('home')}>Home</a></li>
             <li><a href="#announcements" onClick={() => navigateTo('announcements')}>Announcements</a></li>
             <li><a href="#events" onClick={() => navigateTo('events')}>Events</a></li>
-            <li><a href="#streaming" onClick={() => navigateTo('streaming')}>Live Streaming</a></li>
+            <li><a href="#streaming" onClick={() => navigateTo('streaming')}>Stream</a></li>
             <li><a href="#ask-pastor" onClick={() => navigateTo('ask-pastor')}>Ask a Pastor</a></li>
             <li><a href="#login" onClick={() => navigateTo('login')}>Login</a></li>
             <li><a href="#register" onClick={() => navigateTo('register')}>Register</a></li>
