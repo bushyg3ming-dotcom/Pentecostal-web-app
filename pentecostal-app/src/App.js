@@ -1633,8 +1633,17 @@ Email: pentecostalholychurch@gmail.com
                 <div className="stream-player">
                   <div className="youtube-placeholder">
                     <div className="stream-status">
-                      <div className="status-indicator offline"></div>
-                      <span>Service Not Currently Live</span>
+                      {youtubeUrl && extractVideoId(youtubeUrl) ? (
+                        <>
+                          <div className="status-indicator live"></div>
+                          <span>LIVE</span>
+                        </>
+                      ) : (
+                        <>
+                          <div className="status-indicator offline"></div>
+                          <span>OFFLINE</span>
+                        </>
+                      )}
                     </div>
                     <div className="stream-placeholder">
                       <div className="placeholder-icon">📺</div>
