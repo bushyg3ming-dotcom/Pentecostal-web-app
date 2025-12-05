@@ -1353,9 +1353,6 @@ Email: pentecostalholychurch@gmail.com
         );
       default:
         return null;
-        );
-      default:
-        return null;
     }
   };
 
