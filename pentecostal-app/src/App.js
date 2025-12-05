@@ -5,6 +5,58 @@ function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState('home');
 
+  // Registered pastors state
+  const [registeredPastors, setRegisteredPastors] = useState([
+    {
+      id: 'pastor-john',
+      firstName: 'John',
+      lastName: 'Smith',
+      email: 'john.smith@pentecostalholiness.org',
+      phone: '(123) 456-7890',
+      ordinationStatus: 'ordained',
+      yearsExperience: '20+',
+      specializations: ['Biblical Teaching', 'Marriage Counseling', 'Leadership Development'],
+      availability: 'weekdays',
+      title: 'Lead Pastor'
+    },
+    {
+      id: 'pastor-mary',
+      firstName: 'Mary',
+      lastName: 'Johnson',
+      email: 'mary.johnson@pentecostalholiness.org',
+      phone: '(123) 456-7891',
+      ordinationStatus: 'ordained',
+      yearsExperience: '11-20',
+      specializations: ['Womens Ministry', 'Prayer Ministry', 'Spiritual Direction'],
+      availability: 'flexible',
+      title: 'Associate Pastor'
+    },
+    {
+      id: 'pastor-david',
+      firstName: 'David',
+      lastName: 'Williams',
+      email: 'david.williams@pentecostalholiness.org',
+      phone: '(123) 456-7892',
+      ordinationStatus: 'ordained',
+      yearsExperience: '6-10',
+      specializations: ['Youth Ministry', 'Teen Counseling', 'Discipleship'],
+      availability: 'weekends',
+      title: 'Youth Pastor'
+    },
+    {
+      id: 'pastor-sarah',
+      firstName: 'Sarah',
+      lastName: 'Brown',
+      email: 'sarah.brown@pentecostalholiness.org',
+      phone: '(123) 456-7893',
+      ordinationStatus: 'ordained',
+      yearsExperience: '6-10',
+      specializations: ['Womens Issues', 'Family Ministry', 'Community Outreach'],
+      availability: 'weekdays',
+      title: 'Women\'s Ministry Pastor'
+    }
+  ]);
+
   // Ask Pastor form state
   const [pastorForm, setPastorForm] = useState({
     selectedPastor: '',
@@ -299,10 +351,11 @@ Email: pentecostalholychurch@gmail.com
                       className="pastor-select"
                     >
                       <option value="">Select a Pastor</option>
-                      <option value="pastor-john">Pastor John Smith - Lead Pastor</option>
-                      <option value="pastor-mary">Pastor Mary Johnson - Associate Pastor</option>
-                      <option value="pastor-david">Pastor David Williams - Youth Pastor</option>
-                      <option value="pastor-sarah">Pastor Sarah Brown - Women's Ministry</option>
+                      {registeredPastors.map(pastor => (
+                        <option key={pastor.id} value={pastor.id}>
+                          Pastor {pastor.firstName} {pastor.lastName} - {pastor.title}
+                        </option>
+                      ))}
                     </select>
                   </div>
 
@@ -668,6 +721,26 @@ Email: pentecostalholychurch@gmail.com
                 <form className="register-form" onSubmit={(e) => {
                   e.preventDefault();
                   console.log('Registration submitted:', registrationForm);
+
+                  // If registering as pastor, add to registered pastors
+                  if (registrationForm.userType === 'pastor') {
+                    const newPastor = {
+                      id: `pastor-${registrationForm.firstName.toLowerCase()}-${registrationForm.lastName.toLowerCase()}`,
+                      firstName: registrationForm.firstName,
+                      lastName: registrationForm.lastName,
+                      email: registrationForm.email,
+                      phone: registrationForm.phone,
+                      ordinationStatus: registrationForm.ordinationStatus,
+                      yearsExperience: registrationForm.yearsExperience,
+                      specializations: registrationForm.specializations,
+                      availability: registrationForm.availability,
+                      title: registrationForm.ordinationStatus === 'ordained' ? 'Ordained Pastor' :
+                           registrationForm.ordinationStatus === 'lay' ? 'Lay Minister' :
+                           registrationForm.ordinationStatus === 'student' ? 'Ministry Student' : 'Ministry Worker'
+                    };
+                    setRegisteredPastors(prev => [...prev, newPastor]);
+                  }
+
                   setRegistrationSubmitted(true);
                   setTimeout(() => {
                     setRegistrationSubmitted(false);
