@@ -1267,19 +1267,35 @@ Email: pentecostalholychurch@gmail.com
                       <div className="newsletter-sections">
                         <div className="newsletter-section-editor">
                           <h5>Sunday Worship Schedule</h5>
-                          <textarea rows="3" placeholder="List upcoming services and special events..."></textarea>
+                          <textarea
+                            rows="3"
+                            placeholder="List upcoming services and special events..."
+                            style={{width: '100%', resize: 'none'}}
+                          ></textarea>
                         </div>
                         <div className="newsletter-section-editor">
                           <h5>Upcoming Events</h5>
-                          <textarea rows="3" placeholder="Highlight important upcoming events..."></textarea>
+                          <textarea
+                            rows="3"
+                            placeholder="Highlight important upcoming events..."
+                            style={{width: '100%', resize: 'none'}}
+                          ></textarea>
                         </div>
                         <div className="newsletter-section-editor">
                           <h5>Scripture Reading</h5>
-                          <textarea rows="3" placeholder="Weekly scripture focus and daily verse..."></textarea>
+                          <textarea
+                            rows="3"
+                            placeholder="Weekly scripture focus and daily verse..."
+                            style={{width: '100%', resize: 'none'}}
+                          ></textarea>
                         </div>
                         <div className="newsletter-section-editor">
                           <h5>Prayer Requests</h5>
-                          <textarea rows="3" placeholder="General prayer concerns and praises..."></textarea>
+                          <textarea
+                            rows="3"
+                            placeholder="General prayer concerns and praises..."
+                            style={{width: '100%', resize: 'none'}}
+                          ></textarea>
                         </div>
                       </div>
 
