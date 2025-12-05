@@ -1046,6 +1046,12 @@ Email: pentecostalholychurch@gmail.com
               >
                 🎪 Events
               </button>
+              <button
+                className={`tab-btn ${dashboardTab === 'livestream' ? 'active' : ''}`}
+                onClick={() => setDashboardTab('livestream')}
+              >
+                📺 Live Stream
+              </button>
               {userRole === 'admin' && (
                 <button
                   className={`tab-btn ${dashboardTab === 'admin' ? 'active' : ''}`}
@@ -1269,6 +1275,158 @@ Email: pentecostalholychurch@gmail.com
                         <div className="event-actions">
                           <button className="edit-btn">✏️ Edit</button>
                           <button className="delete-btn">🗑️ Delete</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {dashboardTab === 'livestream' && (
+                <div className="livestream-section">
+                  <h3>📺 Live Stream Management</h3>
+                  <div className="livestream-container">
+                    <div className="stream-preview">
+                      <h4>Current Live Stream</h4>
+                      <div className="youtube-embed-container">
+                        <div className="youtube-placeholder-admin">
+                          <div className="stream-status-admin">
+                            <div className="status-indicator-admin offline"></div>
+                            <span>No Live Stream Active</span>
+                          </div>
+                          <div className="embed-instructions">
+                            <h5>📺 YouTube Live Embed Instructions</h5>
+                            <p>To start streaming, go to your YouTube Live Dashboard and get your stream key, then use the embed code below:</p>
+                            <div className="embed-code">
+                              <code>
+{`<iframe width="560" height="315" 
+src="https://www.youtube.com/embed/YOUR_STREAM_ID" 
+title="Pentecostal Holiness Church Live Stream" 
+frameBorder="0" 
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+allowFullScreen>
+</iframe>`}
+                              </code>
+                            </div>
+                            <p><strong>Replace YOUR_STREAM_ID with your actual YouTube live stream ID.</strong></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="stream-controls">
+                      <h4>Stream Settings</h4>
+                      <div className="control-section">
+                        <h5>Stream Status</h5>
+                        <div className="status-controls">
+                          <button className="status-btn offline">🔴 Go Offline</button>
+                          <button className="status-btn live">🟢 Go Live</button>
+                          <button className="status-btn test">🟡 Test Stream</button>
+                        </div>
+                      </div>
+
+                      <div className="control-section">
+                        <h5>Service Information</h5>
+                        <form className="service-info-form">
+                          <div className="form-group">
+                            <label>Service Title</label>
+                            <input type="text" placeholder="Sunday Worship Service" />
+                          </div>
+                          <div className="form-group">
+                            <label>Speaker</label>
+                            <select>
+                              <option>Pastor John Smith</option>
+                              <option>Pastor Mary Johnson</option>
+                              <option>Pastor David Williams</option>
+                              <option>Pastor Sarah Brown</option>
+                              <option>Guest Speaker</option>
+                            </select>
+                          </div>
+                          <div className="form-group">
+                            <label>Scripture Focus</label>
+                            <input type="text" placeholder="Hebrews 11:1" />
+                          </div>
+                          <div className="form-group">
+                            <label>Service Notes</label>
+                            <textarea rows="3" placeholder="Brief description of today's service..."></textarea>
+                          </div>
+                          <button type="submit" className="update-btn">💾 Update Service Info</button>
+                        </form>
+                      </div>
+
+                      <div className="control-section">
+                        <h5>Technical Settings</h5>
+                        <div className="tech-controls">
+                          <div className="control-item">
+                            <label>
+                              <input type="checkbox" defaultChecked />
+                              Enable Chat
+                            </label>
+                          </div>
+                          <div className="control-item">
+                            <label>
+                              <input type="checkbox" defaultChecked />
+                              Allow Prayer Requests
+                            </label>
+                          </div>
+                          <div className="control-item">
+                            <label>
+                              <input type="checkbox" />
+                              Record Service
+                            </label>
+                          </div>
+                          <div className="control-item">
+                            <label>
+                              <input type="checkbox" defaultChecked />
+                              Auto-save to YouTube
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="control-section">
+                        <h5>Quick Actions</h5>
+                        <div className="quick-actions-grid">
+                          <button className="quick-action-btn">📊 View Analytics</button>
+                          <button className="quick-action-btn">💬 Moderate Chat</button>
+                          <button className="quick-action-btn">📝 Edit Service Notes</button>
+                          <button className="quick-action-btn">🔔 Send Notifications</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="stream-history">
+                    <h4>Recent Streams</h4>
+                    <div className="stream-history-list">
+                      <div className="history-item">
+                        <div className="history-info">
+                          <h5>Sunday Worship Service - "Walking in Faith"</h5>
+                          <p>December 1, 2025 | 1,247 views | 45 minutes</p>
+                        </div>
+                        <div className="history-actions">
+                          <button className="view-btn">👁️ View</button>
+                          <button className="download-btn">📥 Download</button>
+                        </div>
+                      </div>
+                      <div className="history-item">
+                        <div className="history-info">
+                          <h5>Wednesday Prayer Meeting</h5>
+                          <p>November 27, 2025 | 523 views | 30 minutes</p>
+                        </div>
+                        <div className="history-actions">
+                          <button className="view-btn">👁️ View</button>
+                          <button className="download-btn">📥 Download</button>
+                        </div>
+                      </div>
+                      <div className="history-item">
+                        <div className="history-info">
+                          <h5>Youth Bible Study</h5>
+                          <p>November 21, 2025 | 387 views | 25 minutes</p>
+                        </div>
+                        <div className="history-actions">
+                          <button className="view-btn">👁️ View</button>
+                          <button className="download-btn">📥 Download</button>
                         </div>
                       </div>
                     </div>
