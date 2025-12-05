@@ -498,3 +498,262 @@ footer {
     padding: 1rem;
   }
 }
+
+.events {
+  padding: 4rem 2rem;
+  background: #f8f9fa;
+  min-height: calc(100vh - 200px);
+}
+
+.events h2 {
+  text-align: center;
+  margin-bottom: 3rem;
+  font-size: 2.5rem;
+  color: #333;
+}
+
+.events-container {
+  display: grid;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.event-card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.event-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.event-card.featured {
+  border: 3px solid #667eea;
+  position: relative;
+}
+
+.event-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.event-header h3 {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.event-badge {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.event-image {
+  height: 200px;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.mountain-icon {
+  font-size: 6rem;
+  opacity: 0.8;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.event-content {
+  padding: 2rem;
+}
+
+.event-content h4 {
+  color: #667eea;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.event-content > p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  color: #555;
+}
+
+.event-highlights,
+.event-stories,
+.event-activities,
+.event-outcome {
+  margin-bottom: 2rem;
+}
+
+.event-highlights h5,
+.event-stories h5,
+.event-activities h5,
+.event-outcome h5 {
+  color: #667eea;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.event-highlights ul {
+  margin: 0 0 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.event-highlights li {
+  margin-bottom: 0.8rem;
+  line-height: 1.5;
+}
+
+.event-stories blockquote {
+  background: #f8f9fa;
+  border-left: 4px solid #667eea;
+  padding: 1rem 1.5rem;
+  margin: 1rem 0;
+  font-style: italic;
+  border-radius: 0 8px 8px 0;
+  position: relative;
+}
+
+.event-stories blockquote::before {
+  content: '"';
+  font-size: 3rem;
+  color: #667eea;
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  opacity: 0.3;
+}
+
+.event-activities p,
+.event-outcome p {
+  line-height: 1.6;
+  color: #666;
+}
+
+.event-footer {
+  background: #f8f9fa;
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.event-date {
+  color: #888;
+  font-weight: 600;
+}
+
+.blessing-note {
+  color: #667eea;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.event-card.upcoming {
+  border-left: 5px solid #28a745;
+}
+
+.event-card.upcoming h3 {
+  color: #28a745;
+  margin-bottom: 0.5rem;
+}
+
+.event-card.upcoming .event-date {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.register-btn {
+  background: #28a745;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.register-btn:hover {
+  background: #218838;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+}
+
+@media (max-width: 768px) {
+  .events {
+    padding: 3rem 1rem;
+  }
+
+  .events h2 {
+    font-size: 2rem;
+  }
+
+  .events-container {
+    gap: 1.5rem;
+  }
+
+  .event-header {
+    padding: 1.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .event-header h3 {
+    font-size: 1.5rem;
+  }
+
+  .event-image {
+    height: 150px;
+  }
+
+  .mountain-icon {
+    font-size: 4rem;
+  }
+
+  .event-content {
+    padding: 1.5rem;
+  }
+
+  .event-content h4 {
+    font-size: 1.3rem;
+  }
+
+  .event-footer {
+    padding: 1rem 1.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
