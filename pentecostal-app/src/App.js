@@ -759,18 +759,6 @@ Email: pentecostalholychurch@gmail.com
             </div>
           </section>
         );
-      case 'contact':
-        return (
-          <section id="contact" className="contact">
-            <h2>Contact Us</h2>
-            <div className="contact-card">
-              <p><strong>Address:</strong> 5 Frederick Street, Davidsonville, Roodepoort, 1724</p>
-              <p><strong>Phone:</strong> (123) 456-7890</p>
-              <p><strong>Email:</strong> pentecostalholychurch@gmail.com</p>
-              <p>We'd love to hear from you! Visit us or reach out to join our faith community.</p>
-            </div>
-          </section>
-        );
       default:
         return null;
     }
