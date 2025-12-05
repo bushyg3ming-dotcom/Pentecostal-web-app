@@ -464,16 +464,29 @@ Email: pentecostalholychurch@gmail.com
                 <form className="login-form" onSubmit={(e) => {
                   e.preventDefault();
                   console.log('Login submitted:', loginForm);
-                  setLoginSubmitted(true);
-                  setTimeout(() => {
-                    setLoginSubmitted(false);
-                    setLoginForm({
-                      userType: '',
-                      email: '',
-                      password: '',
-                      rememberMe: false
-                    });
-                  }, 3000);
+
+                  // Simulate login logic - in real app, this would authenticate with backend
+                  if (loginForm.userType === 'pastor') {
+                    // Special case: if email is admin@pastor.com, make them admin
+                    if (loginForm.email === 'admin@pastor.com') {
+                      setUserRole('admin');
+                    } else {
+                      setUserRole('pastor');
+                    }
+                    setIsLoggedIn(true);
+                    setCurrentPage('dashboard');
+                  } else {
+                    setLoginSubmitted(true);
+                    setTimeout(() => {
+                      setLoginSubmitted(false);
+                      setLoginForm({
+                        userType: '',
+                        email: '',
+                        password: '',
+                        rememberMe: false
+                      });
+                    }, 3000);
+                  }
                 }}>
 
                   {/* User Type Selection */}
@@ -981,42 +994,175 @@ Email: pentecostalholychurch@gmail.com
             </div>
           </section>
         );
-      default:
-        return null;
-    }
-  };
+      case 'dashboard':
+        return (
+          <section className="dashboard">
+            <div className="dashboard-header">
+              <div className="dashboard-welcome">
+                <h2>🖥️ Church Management Dashboard</h2>
+                <p>Welcome back, {userRole === 'admin' ? 'Senior Pastor (Admin)' : 'Pastor'}! Manage your ministry and serve your congregation.</p>
+              </div>
+              <div className="dashboard-actions">
+                <button
+                  className="logout-btn"
+                  onClick={() => {
+                    setIsLoggedIn(false);
+                    setUserRole('');
+                    setCurrentPage('home');
+                    setDashboardTab('messages');
+                  }}
+                >
+                  🚪 Logout
+                </button>
+              </div>
+            </div>
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <div className="header-content">
-          <img src="/logo.jpg" alt="Pentecostal Holiness Church Logo" className="logo" />
-          <h1>Pentecostal Holiness Church</h1>
-        </div>
-        <nav className={menuOpen ? 'nav-open' : ''}>
-          <ul>
-            <li><a href="#home" onClick={() => navigateTo('home')}>Home</a></li>
-            <li><a href="#announcements" onClick={() => navigateTo('announcements')}>Announcements</a></li>
-            <li><a href="#events" onClick={() => navigateTo('events')}>Events</a></li>
-            <li><a href="#ask-pastor" onClick={() => navigateTo('ask-pastor')}>Ask a Pastor</a></li>
-            <li><a href="#login" onClick={() => navigateTo('login')}>Login</a></li>
-            <li><a href="#register" onClick={() => navigateTo('register')}>Register</a></li>
-          </ul>
-        </nav>
-        <button className="burger" onClick={toggleMenu}>
-          <span className="bar"></span>
-          <span className="bar"></span>
-          <span className="bar"></span>
-        </button>
-      </header>
-      <main>
-        {renderPage()}
-      </main>
-      <footer>
-        <p>&copy; 2025 Pentecostal Holiness Church. All rights reserved.</p>
-      </footer>
-    </div>
-  );
-}
+            <div className="dashboard-tabs">
+              <button
+                className={`tab-btn ${dashboardTab === 'messages' ? 'active' : ''}`}
+                onClick={() => setDashboardTab('messages')}
+              >
+                📬 Messages ({userRole === 'admin' ? '25' : '12'})
+              </button>
+              <button
+                className={`tab-btn ${dashboardTab === 'announcements' ? 'active' : ''}`}
+                onClick={() => setDashboardTab('announcements')}
+              >
+                📢 Announcements
+              </button>
+              <button
+                className={`tab-btn ${dashboardTab === 'newsletters' ? 'active' : ''}`}
+                onClick={() => setDashboardTab('newsletters')}
+              >
+                📄 Newsletters
+              </button>
+              <button
+                className={`tab-btn ${dashboardTab === 'events' ? 'active' : ''}`}
+                onClick={() => setDashboardTab('events')}
+              >
+                🎪 Events
+              </button>
+              {userRole === 'admin' && (
+                <button
+                  className={`tab-btn ${dashboardTab === 'admin' ? 'active' : ''}`}
+                  onClick={() => setDashboardTab('admin')}
+                >
+                  ⚙️ Admin Panel
+                </button>
+              )}
+            </div>
 
-export default App;
+            <div className="dashboard-content">
+              {dashboardTab === 'messages' && (
+                <div className="messages-section">
+                  <h3>Incoming Messages & Prayer Requests</h3>
+                  <div className="messages-list">
+                    <div className="message-card">
+                      <div className="message-header">
+                        <h4>🙏 Prayer Request - Anonymous</h4>
+                        <span className="message-date">Today, 2:30 PM</span>
+                      </div>
+                      <p className="message-content">Please pray for my mother who is in the hospital. She's having surgery tomorrow and we're all worried.</p>
+                      <div className="message-actions">
+                        <button className="respond-btn">📝 Respond</button>
+                        <button className="mark-read-btn">✅ Mark as Read</button>
+                      </div>
+                    </div>
+
+                    <div className="message-card">
+                      <div className="message-header">
+                        <h4>📖 Biblical Guidance - Sarah Johnson</h4>
+                        <span className="message-date">Yesterday, 4:15 PM</span>
+                      </div>
+                      <p className="message-content">I'm struggling with forgiveness in my marriage. Can you recommend some Bible verses and advice?</p>
+                      <div className="message-actions">
+                        <button className="respond-btn">📝 Respond</button>
+                        <button className="mark-read-btn">✅ Mark as Read</button>
+                      </div>
+                    </div>
+
+                    <div className="message-card">
+                      <div className="message-header">
+                        <h4>🙏 Prayer Request - Michael Davis</h4>
+                        <span className="message-date">Dec 3, 9:45 AM</span>
+                      </div>
+                      <p className="message-content">Please pray for guidance as I make a big career decision. I need wisdom and peace.</p>
+                      <div className="message-actions">
+                        <button className="respond-btn">📝 Respond</button>
+                        <button className="mark-read-btn">✅ Mark as Read</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {dashboardTab === 'announcements' && (
+                <div className="announcements-section">
+                  <h3>Manage Church Announcements</h3>
+                  <div className="announcement-editor">
+                    <form className="editor-form">
+                      <div className="form-row">
+                        <div className="form-group">
+                          <label>Title</label>
+                          <input type="text" placeholder="Announcement title" />
+                        </div>
+                        <div className="form-group">
+                          <label>Date</label>
+                          <input type="date" />
+                        </div>
+                      </div>
+                      <div className="form-group">
+                        <label>Content</label>
+                        <textarea rows="4" placeholder="Write your announcement here..."></textarea>
+                      </div>
+                      <div className="form-actions">
+                        <button type="submit" className="save-btn">💾 Save Announcement</button>
+                        <button type="button" className="preview-btn">👁️ Preview</button>
+                      </div>
+                    </form>
+                  </div>
+
+                  <div className="current-announcements">
+                    <h4>Current Announcements</h4>
+                    <div className="announcements-preview">
+                      <div className="preview-card">
+                        <h5>🎵 Special Music Sunday</h5>
+                        <p>December 8, 2025</p>
+                        <div className="preview-actions">
+                          <button className="edit-btn">✏️ Edit</button>
+                          <button className="delete-btn">🗑️ Delete</button>
+                        </div>
+                      </div>
+                      <div className="preview-card">
+                        <h5>🕊️ Community Prayer Meeting</h5>
+                        <p>December 10, 2025</p>
+                        <div className="preview-actions">
+                          <button className="edit-btn">✏️ Edit</button>
+                          <button className="delete-btn">🗑️ Delete</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {dashboardTab === 'newsletters' && (
+                <div className="newsletters-section">
+                  <h3>Weekly Newsletter Editor</h3>
+                  <div className="newsletter-editor">
+                    <form className="editor-form">
+                      <div className="form-row">
+                        <div className="form-group">
+                          <label>Newsletter Title</label>
+                          <input type="text" placeholder="Weekly Update - December 2025" />
+                        </div>
+                        <div className="form-group">
+                          <label>Week Of</label>
+                          <input type="date" />
+                        </div>
+                      </div>
+
+                      <div className="newsletter-sections">
+                        <div className="newsletter-section-editor">
+                          <h5>Sunday Worship Schedule</h5>
+                          <textarea rows="3" placeholder="List upcoming services and special events..."></textarea>
