@@ -1355,121 +1355,121 @@ Email: pentecostalholychurch@gmail.com
             </div>
           </section>
         );
-      case 'user-dashboard':
+      case 'streaming':
         return (
-          <section className="user-dashboard">
-            <div className="dashboard-header">
-              <div className="dashboard-welcome">
-                <h2>🙏 My Spiritual Journey</h2>
-                <p>Welcome back, Church Member! Connect with your pastors and grow in faith.</p>
-              </div>
-              <div className="dashboard-actions">
-                <button
-                  className="logout-btn"
-                  onClick={() => {
-                    setIsLoggedIn(false);
-                    setUserRole('');
-                    setCurrentPage('home');
-                  }}
-                >
-                  🚪 Logout
-                </button>
-              </div>
+          <section className="streaming">
+            <div className="streaming-header">
+              <h2>📺 Live Streaming</h2>
+              <p>Join us for worship and fellowship from anywhere in the world. Experience God's presence through our live services.</p>
             </div>
 
-            <div className="dashboard-tabs">
-              <button
-                className={`tab-btn ${dashboardTab === 'messages' ? 'active' : ''}`}
-                onClick={() => setDashboardTab('messages')}
-              >
-                📬 My Messages (3)
-              </button>
-              <button
-                className={`tab-btn ${dashboardTab === 'send' ? 'active' : ''}`}
-                onClick={() => setDashboardTab('send')}
-              >
-                ✉️ Send Message
-              </button>
-            </div>
-
-            <div className="dashboard-content">
-              {dashboardTab === 'messages' && (
-                <div className="user-messages-section">
-                  <h3>My Messages & Responses</h3>
-                  <div className="messages-list">
-                    <div className="message-card response">
-                      <div className="message-header">
-                        <h4>🙏 Response from Pastor Mary Johnson</h4>
-                        <span className="message-date">Today, 10:30 AM</span>
-                      </div>
-                      <p className="message-content">Dear Sarah, Thank you for sharing your prayer request. I have lifted your mother up in prayer and asked our prayer team to join me. Please know that God is with you during this time. If you need someone to talk to or visit, please don't hesitate to reach out. May God's peace surround you. - Pastor Mary</p>
-                      <div className="message-actions">
-                        <button className="respond-btn">📝 Reply</button>
-                        <button className="thank-btn">🙏 Thank You</button>
-                      </div>
+            <div className="live-stream-container">
+              <div className="stream-main">
+                <div className="stream-player">
+                  <div className="youtube-placeholder">
+                    <div className="stream-status">
+                      <div className="status-indicator offline"></div>
+                      <span>Service Not Currently Live</span>
                     </div>
-
-                    <div className="message-card sent">
-                      <div className="message-header">
-                        <h4>📖 Biblical Guidance Request - Sent</h4>
-                        <span className="message-date">Yesterday, 2:15 PM</span>
+                    <div className="stream-placeholder">
+                      <div className="placeholder-icon">📺</div>
+                      <h3>Live Service Stream</h3>
+                      <p>Next Service: Sunday Worship - 10:00 AM</p>
+                      <div className="service-countdown">
+                        <div className="countdown-item">
+                          <span className="countdown-number">2</span>
+                          <span className="countdown-label">Days</span>
+                        </div>
+                        <div className="countdown-item">
+                          <span className="countdown-number">14</span>
+                          <span className="countdown-label">Hours</span>
+                        </div>
+                        <div className="countdown-item">
+                          <span className="countdown-number">32</span>
+                          <span className="countdown-label">Minutes</span>
+                        </div>
                       </div>
-                      <p className="message-content">I'm struggling with forgiveness in my marriage. Can you recommend some Bible verses and advice?</p>
-                      <div className="message-status">
-                        <span className="status-badge">✅ Read by Pastor</span>
-                        <span className="response-time">Response expected within 24-48 hours</span>
-                      </div>
+                      <button className="reminder-btn">🔔 Set Reminder</button>
                     </div>
+                  </div>
+                  {/* Replace this placeholder with actual YouTube embed when live:
+                  <iframe
+                    width="100%"
+                    height="400"
+                    src="https://www.youtube.com/embed/YOUR_LIVE_STREAM_ID"
+                    title="Pentecostal Holiness Church Live Stream"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  ></iframe>
+                  */}
+                </div>
 
-                    <div className="message-card sent">
-                      <div className="message-header">
-                        <h4>🙏 Prayer Request - Sent</h4>
-                        <span className="message-date">Dec 2, 9:00 AM</span>
+                <div className="stream-info">
+                  <div className="current-service">
+                    <h3>📅 Upcoming Services</h3>
+                    <div className="service-schedule">
+                      <div className="service-item live-service">
+                        <div className="service-details">
+                          <h4>Sunday Worship Service</h4>
+                          <p>Every Sunday at 10:00 AM</p>
+                          <p>Live stream begins at 9:45 AM</p>
+                        </div>
+                        <div className="service-actions">
+                          <button className="join-service-btn">🙏 Join Live</button>
+                        </div>
                       </div>
-                      <p className="message-content">Please pray for guidance as I make a big career decision. I need wisdom and peace.</p>
-                      <div className="message-status">
-                        <span className="status-badge">✅ Read by Pastor</span>
-                        <span className="response-time">Response expected within 24-48 hours</span>
+
+                      <div className="service-item">
+                        <div className="service-details">
+                          <h4>Wednesday Prayer Meeting</h4>
+                          <p>Every Wednesday at 7:00 PM</p>
+                          <p>Live stream available</p>
+                        </div>
+                        <div className="service-actions">
+                          <button className="join-service-btn">🙏 Join Live</button>
+                        </div>
+                      </div>
+
+                      <div className="service-item">
+                        <div className="service-details">
+                          <h4>Bible Study</h4>
+                          <p>Every Thursday at 6:00 PM</p>
+                          <p>Interactive online sessions</p>
+                        </div>
+                        <div className="service-actions">
+                          <button className="join-service-btn">🙏 Join Live</button>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              )}
+              </div>
 
-              {dashboardTab === 'send' && (
-                <div className="send-message-section">
-                  <h3>Send a Message to Your Pastor</h3>
-                  <div className="message-form-container">
-                    <form className="message-form" onSubmit={(e) => {
-                      e.preventDefault();
-                      // Simulate sending message
-                      alert('Your message has been sent to your pastor! You will receive a response within 24-48 hours.');
-                      setDashboardTab('messages');
-                    }}>
+              <div className="stream-sidebar">
+                <div className="service-notes">
+                  <h3>📝 Today's Service Notes</h3>
+                  <div className="notes-content">
+                    <h4>Sermon: "Walking in Faith"</h4>
+                    <p><strong>Scripture:</strong> Hebrews 11:1 - "Now faith is confidence in what we hope for and assurance about what we do not see."</p>
+                    <p><strong>Speaker:</strong> Pastor John Smith</p>
+                    <p><strong>Special Music:</strong> Choir performance of "Amazing Grace"</p>
 
-                      <div className="form-section">
-                        <h4>Choose Your Pastor</h4>
-                        <select required className="pastor-select">
-                          <option value="">Select a Pastor</option>
-                          <option value="pastor-john">Pastor John Smith - Lead Pastor</option>
-                          <option value="pastor-mary">Pastor Mary Johnson - Associate Pastor</option>
-                          <option value="pastor-david">Pastor David Williams - Youth Pastor</option>
-                          <option value="pastor-sarah">Pastor Sarah Brown - Women's Ministry</option>
-                        </select>
-                      </div>
+                    <div className="service-outline">
+                      <h5>Service Outline:</h5>
+                      <ul>
+                        <li>Opening Worship - 10:00 AM</li>
+                        <li>Welcome & Announcements - 10:15 AM</li>
+                        <li>Children's Message - 10:20 AM</li>
+                        <li>Special Music - 10:30 AM</li>
+                        <li>Sermon - 10:45 AM</li>
+                        <li>Closing Worship & Benediction - 11:30 AM</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
 
-                      <div className="form-section">
-                        <h4>Type of Message</h4>
-                        <div className="message-type-options">
-                          <label className="message-type-option">
-                            <input
-                              type="radio"
-                              name="messageType"
-                              value="advice"
-                              defaultChecked
-                              required
-                            />
-                            <span className="option-label">📖 Biblical Advice & Guidance</span>
+                <div className="live-chat">
                           </label>
                           <label className="message-type-option">
                             <input
@@ -1585,6 +1585,7 @@ Email: pentecostalholychurch@gmail.com
             <li><a href="#home" onClick={() => navigateTo('home')}>Home</a></li>
             <li><a href="#announcements" onClick={() => navigateTo('announcements')}>Announcements</a></li>
             <li><a href="#events" onClick={() => navigateTo('events')}>Events</a></li>
+            <li><a href="#streaming" onClick={() => navigateTo('streaming')}>Live Streaming</a></li>
             <li><a href="#ask-pastor" onClick={() => navigateTo('ask-pastor')}>Ask a Pastor</a></li>
             <li><a href="#login" onClick={() => navigateTo('login')}>Login</a></li>
             <li><a href="#register" onClick={() => navigateTo('register')}>Register</a></li>
