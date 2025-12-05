@@ -1470,6 +1470,229 @@ Email: pentecostalholychurch@gmail.com
                 </div>
 
                 <div className="live-chat">
+                  <h3>💬 Live Prayer Requests</h3>
+                  <div className="chat-messages">
+                    <div className="chat-message">
+                      <span className="chat-user">Anonymous</span>
+                      <p>Please pray for healing for my grandmother who is in the hospital.</p>
+                      <span className="chat-time">2 min ago</span>
+                    </div>
+                    <div className="chat-message">
+                      <span className="chat-user">Sarah J.</span>
+                      <p>Thank you for today's message about faith. It spoke to my heart!</p>
+                      <span className="chat-time">5 min ago</span>
+                    </div>
+                    <div className="chat-message">
+                      <span className="chat-user">Michael D.</span>
+                      <p>Praise report: God answered our prayers for the job interview!</p>
+                      <span className="chat-time">8 min ago</span>
+                    </div>
+                  </div>
+
+                  <form className="chat-form" onSubmit={(e) => {
+                    e.preventDefault();
+                    alert('Your prayer request has been shared with our prayer team!');
+                    e.target.reset();
+                  }}>
+                    <textarea
+                      placeholder="Share a prayer request or praise report..."
+                      rows="3"
+                      required
+                    ></textarea>
+                    <div className="chat-options">
+                      <label className="anonymous-option">
+                        <input type="checkbox" />
+                        <span>Post anonymously</span>
+                      </label>
+                      <button type="submit" className="send-chat-btn">📤 Share</button>
+                    </div>
+                  </form>
+                </div>
+
+                <div className="stream-resources">
+                  <h3>📚 Service Resources</h3>
+                  <div className="resource-links">
+                    <a href="#bulletin" className="resource-link">📄 Service Bulletin</a>
+                    <a href="#lyrics" className="resource-link">🎵 Song Lyrics</a>
+                    <a href="#giving" className="resource-link">💝 Online Giving</a>
+                    <a href="#connect" className="resource-link">🤝 Connect Card</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="past-services">
+              <h3>🎥 Recent Services</h3>
+              <div className="services-grid">
+                <div className="service-card">
+                  <div className="service-thumbnail">⛪</div>
+                  <div className="service-info">
+                    <h4>"The Power of Prayer" - Pastor Mary Johnson</h4>
+                    <p>December 1, 2025</p>
+                    <button className="watch-btn">▶️ Watch Now</button>
+                  </div>
+                </div>
+
+                <div className="service-card">
+                  <div className="service-thumbnail">🙏</div>
+                  <div className="service-info">
+                    <h4>"God's Grace in Our Lives" - Pastor John Smith</h4>
+                    <p>November 24, 2025</p>
+                    <button className="watch-btn">▶️ Watch Now</button>
+                  </div>
+                </div>
+
+                <div className="service-card">
+                  <div className="service-thumbnail">📖</div>
+                  <div className="service-info">
+                    <h4>"Walking by Faith" - Pastor David Williams</h4>
+                    <p>November 17, 2025</p>
+                    <button className="watch-btn">▶️ Watch Now</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="streaming-info">
+              <div className="info-section">
+                <h3>🌐 Streaming Information</h3>
+                <div className="info-grid">
+                  <div className="info-card">
+                    <h4>📱 How to Watch</h4>
+                    <p>Services are streamed live on YouTube. Click the "Join Live" button when service begins, or visit our YouTube channel directly.</p>
+                  </div>
+                  <div className="info-card">
+                    <h4>🎚️ Audio/Video Quality</h4>
+                    <p>We strive for the best streaming quality possible. If you experience issues, try refreshing the page or switching devices.</p>
+                  </div>
+                  <div className="info-card">
+                    <h4>🙏 Participation</h4>
+                    <p>Join us in worship from home! Participate in prayer requests, give online, and connect with our community.</p>
+                  </div>
+                  <div className="info-card">
+                    <h4>💝 Support the Ministry</h4>
+                    <p>Your online giving helps us continue streaming services and supporting our church community.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        );
+      case 'user-dashboard':
+        return (
+          <section className="user-dashboard">
+            <div className="dashboard-header">
+              <div className="dashboard-welcome">
+                <h2>🙏 My Spiritual Journey</h2>
+                <p>Welcome back, Church Member! Connect with your pastors and grow in faith.</p>
+              </div>
+              <div className="dashboard-actions">
+                <button
+                  className="logout-btn"
+                  onClick={() => {
+                    setIsLoggedIn(false);
+                    setUserRole('');
+                    setCurrentPage('home');
+                  }}
+                >
+                  🚪 Logout
+                </button>
+              </div>
+            </div>
+
+            <div className="dashboard-tabs">
+              <button
+                className={`tab-btn ${dashboardTab === 'messages' ? 'active' : ''}`}
+                onClick={() => setDashboardTab('messages')}
+              >
+                📬 My Messages (3)
+              </button>
+              <button
+                className={`tab-btn ${dashboardTab === 'send' ? 'active' : ''}`}
+                onClick={() => setDashboardTab('send')}
+              >
+                ✉️ Send Message
+              </button>
+            </div>
+
+            <div className="dashboard-content">
+              {dashboardTab === 'messages' && (
+                <div className="user-messages-section">
+                  <h3>My Messages & Responses</h3>
+                  <div className="messages-list">
+                    <div className="message-card response">
+                      <div className="message-header">
+                        <h4>🙏 Response from Pastor Mary Johnson</h4>
+                        <span className="message-date">Today, 10:30 AM</span>
+                      </div>
+                      <p className="message-content">Dear Sarah, Thank you for sharing your prayer request. I have lifted your mother up in prayer and asked our prayer team to join me. Please know that God is with you during this time. If you need someone to talk to or visit, please don't hesitate to reach out. May God's peace surround you. - Pastor Mary</p>
+                      <div className="message-actions">
+                        <button className="respond-btn">📝 Reply</button>
+                        <button className="thank-btn">🙏 Thank You</button>
+                      </div>
+                    </div>
+
+                    <div className="message-card sent">
+                      <div className="message-header">
+                        <h4>📖 Biblical Guidance Request - Sent</h4>
+                        <span className="message-date">Yesterday, 2:15 PM</span>
+                      </div>
+                      <p className="message-content">I'm struggling with forgiveness in my marriage. Can you recommend some Bible verses and advice?</p>
+                      <div className="message-status">
+                        <span className="status-badge">✅ Read by Pastor</span>
+                        <span className="response-time">Response expected within 24-48 hours</span>
+                      </div>
+                    </div>
+
+                    <div className="message-card sent">
+                      <div className="message-header">
+                        <h4>🙏 Prayer Request - Sent</h4>
+                        <span className="message-date">Dec 2, 9:00 AM</span>
+                      </div>
+                      <p className="message-content">Please pray for guidance as I make a big career decision. I need wisdom and peace.</p>
+                      <div className="message-status">
+                        <span className="status-badge">✅ Read by Pastor</span>
+                        <span className="response-time">Response expected within 24-48 hours</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {dashboardTab === 'send' && (
+                <div className="send-message-section">
+                  <h3>Send a Message to Your Pastor</h3>
+                  <div className="message-form-container">
+                    <form className="message-form" onSubmit={(e) => {
+                      e.preventDefault();
+                      // Simulate sending message
+                      alert('Your message has been sent to your pastor! You will receive a response within 24-48 hours.');
+                      setDashboardTab('messages');
+                    }}>
+
+                      <div className="form-section">
+                        <h4>Choose Your Pastor</h4>
+                        <select required className="pastor-select">
+                          <option value="">Select a Pastor</option>
+                          <option value="pastor-john">Pastor John Smith - Lead Pastor</option>
+                          <option value="pastor-mary">Pastor Mary Johnson - Associate Pastor</option>
+                          <option value="pastor-david">Pastor David Williams - Youth Pastor</option>
+                          <option value="pastor-sarah">Pastor Sarah Brown - Women's Ministry</option>
+                        </select>
+                      </div>
+
+                      <div className="form-section">
+                        <h4>Type of Message</h4>
+                        <div className="message-type-options">
+                          <label className="message-type-option">
+                            <input
+                              type="radio"
+                              name="messageType"
+                              value="advice"
+                              defaultChecked
+                              required
+                            />
+                            <span className="option-label">📖 Biblical Advice & Guidance</span>
                           </label>
                           <label className="message-type-option">
                             <input
