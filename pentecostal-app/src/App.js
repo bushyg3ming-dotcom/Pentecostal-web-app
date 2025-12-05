@@ -173,6 +173,72 @@ Email: pentecostalholychurch@gmail.com
                   </div>
                 </div>
                 <div className="event-footer">
+                  <span className="event-date">Recently Completed</span>
+                  <span className="blessing-note">🙏 Blessed by God's Grace</span>
+                </div>
+              </div>
+
+              <div className="event-card upcoming">
+                <h3>🎄 Christmas Youth Retreat</h3>
+                <p className="event-date">December 26-28, 2025</p>
+                <p>Join us for a special Christmas retreat filled with worship, fellowship, and celebrating Jesus' birth!</p>
+                <button className="register-btn">Register Interest</button>
+              </div>
+
+              <div className="event-card upcoming">
+                <h3>🌸 Spring Youth Conference</h3>
+                <p className="event-date">September 2026</p>
+                <p>Mark your calendars for our annual youth conference with guest speakers, workshops, and powerful worship!</p>
+                <button className="register-btn">Learn More</button>
+              </div>
+            </div>
+          </section>
+        );
+      case 'services':
+        return (
+          <section id="services" className="services">
+            <h2>Our Services</h2>
+            <div className="service-cards">
+              <div className="service-card">
+                <h3>Sunday Worship</h3>
+                <p>Join us every Sunday at 10 AM for an inspiring worship service filled with praise, prayer, and the Word of God.</p>
+              </div>
+              <div className="service-card">
+                <h3>Wednesday Prayer</h3>
+                <p>Come together in prayer every Wednesday at 7 PM to seek God's guidance and intercede for our community.</p>
+              </div>
+              <div className="service-card">
+                <h3>Bible Study</h3>
+                <p>Deepen your understanding of Scripture during our Thursday Bible Study sessions at 6 PM.</p>
+              </div>
+            </div>
+          </section>
+        );
+      case 'contact':
+        return (
+          <section id="contact" className="contact">
+            <h2>Contact Us</h2>
+            <div className="contact-card">
+              <p><strong>Address:</strong> 5 Frederick Street, Davidsonville, Roodepoort, 1724</p>
+              <p><strong>Phone:</strong> (123) 456-7890</p>
+              <p><strong>Email:</strong> pentecostalholychurch@gmail.com</p>
+              <p>We'd love to hear from you! Visit us or reach out to join our faith community.</p>
+            </div>
+          </section>
+        );
+      default:
+        return null;
+    }
+  };
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        <div className="header-content">
+          <img src="/logo.jpg" alt="Pentecostal Holiness Church Logo" className="logo" />
+          <h1>Pentecostal Holiness Church</h1>
+        </div>
+        <nav className={menuOpen ? 'nav-open' : ''}>
           <ul>
             <li><a href="#home" onClick={() => navigateTo('home')}>Home</a></li>
             <li><a href="#announcements" onClick={() => navigateTo('announcements')}>Announcements</a></li>
