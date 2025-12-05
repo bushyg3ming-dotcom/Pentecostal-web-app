@@ -24,6 +24,8 @@ function App() {
     lastName: '',
     email: '',
     phone: '',
+    password: '',
+    confirmPassword: '',
     // Pastor specific fields
     ordinationStatus: '',
     yearsExperience: '',
