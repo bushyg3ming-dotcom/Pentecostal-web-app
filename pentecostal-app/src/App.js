@@ -1037,6 +1037,7 @@ Email: pentecostalholychurch@gmail.com
                       <input
                         type="checkbox"
                         required
+                        style={{width: '16px', height: '16px', transform: 'scale(0.8)'}}
                       />
                       <span className="terms-text" style={{whiteSpace: 'nowrap', fontSize: '0.7em'}}>
                         I agree to the church's <a href="#privacy" style={{color: '#667eea'}}>privacy policy</a> and <a href="#terms" style={{color: '#667eea'}}>terms of service</a>.
