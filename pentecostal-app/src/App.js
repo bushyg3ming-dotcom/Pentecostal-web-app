@@ -2085,4 +2085,10 @@ Email: pentecostalholychurch@gmail.com
         {renderPage()}
       </main>
       <footer>
-        <p>&copy; 2025 Pentecostal Holiness Church. All rights reserved.
+        <p>&copy; 2025 Pentecostal Holiness Church. All rights reserved.</p>
+      </footer>
+    </div>
+  );
+}
+
+export default App;
