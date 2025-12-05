@@ -810,8 +810,6 @@ Email: pentecostalholychurch@gmail.com
             <li><a href="#events" onClick={() => navigateTo('events')}>Events</a></li>
             <li><a href="#ask-pastor" onClick={() => navigateTo('ask-pastor')}>Ask a Pastor</a></li>
             <li><a href="#register" onClick={() => navigateTo('register')}>Register</a></li>
-            <li><a href="#services" onClick={() => navigateTo('services')}>Services</a></li>
-            <li><a href="#contact" onClick={() => navigateTo('contact')}>Contact</a></li>
           </ul>
         </nav>
         <button className="burger" onClick={toggleMenu}>
