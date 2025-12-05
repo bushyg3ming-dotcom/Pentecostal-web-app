@@ -741,6 +741,32 @@ Email: pentecostalholychurch@gmail.com
                         />
                       </div>
                     </div>
+                    <div className="form-row">
+                      <div className="form-group">
+                        <label htmlFor="password">Password *</label>
+                        <input
+                          type="password"
+                          id="password"
+                          value={registrationForm.password}
+                          onChange={(e) => setRegistrationForm(prev => ({ ...prev, password: e.target.value }))}
+                          required
+                          placeholder="Create a secure password"
+                          minLength="8"
+                        />
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="confirmPassword">Confirm Password *</label>
+                        <input
+                          type="password"
+                          id="confirmPassword"
+                          value={registrationForm.confirmPassword}
+                          onChange={(e) => setRegistrationForm(prev => ({ ...prev, confirmPassword: e.target.value }))}
+                          required
+                          placeholder="Confirm your password"
+                          minLength="8"
+                        />
+                      </div>
+                    </div>
                   </div>
 
                   {/* Pastor-Specific Fields */}
