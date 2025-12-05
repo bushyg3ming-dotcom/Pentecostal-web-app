@@ -128,54 +128,55 @@ Email: pentecostalholychurch@gmail.com
             </div>
           </section>
         );
-      case 'services':
+      case 'events':
         return (
-          <section id="services" className="services">
-            <h2>Our Services</h2>
-            <div className="service-cards">
-              <div className="service-card">
-                <h3>Sunday Worship</h3>
-                <p>Join us every Sunday at 10 AM for an inspiring worship service filled with praise, prayer, and the Word of God.</p>
-              </div>
-              <div className="service-card">
-                <h3>Wednesday Prayer</h3>
-                <p>Come together in prayer every Wednesday at 7 PM to seek God's guidance and intercede for our community.</p>
-              </div>
-              <div className="service-card">
-                <h3>Bible Study</h3>
-                <p>Deepen your understanding of Scripture during our Thursday Bible Study sessions at 6 PM.</p>
-              </div>
-            </div>
-          </section>
-        );
-      case 'contact':
-        return (
-          <section id="contact" className="contact">
-            <h2>Contact Us</h2>
-            <div className="contact-card">
-              <p><strong>Address:</strong> 5 Frederick Street, Davidsonville, Roodepoort, 1724</p>
-              <p><strong>Phone:</strong> (123) 456-7890</p>
-              <p><strong>Email:</strong> pentecostalholychurch@gmail.com</p>
-              <p>We'd love to hear from you! Visit us or reach out to join our faith community.</p>
-            </div>
-          </section>
-        );
-      default:
-        return null;
-    }
-  };
+          <section className="events">
+            <h2>Church Events</h2>
+            <div className="events-container">
+              <div className="event-card featured">
+                <div className="event-header">
+                  <h3>🏔️ Youth Camping Trip to the Drakensberg</h3>
+                  <span className="event-badge">Blessed & Memorable</span>
+                </div>
+                <div className="event-image">
+                  <div className="mountain-icon">⛰️</div>
+                </div>
+                <div className="event-content">
+                  <h4>The Ultimate Blessing in the Mountains!</h4>
+                  <p>Our recent youth camping trip to the majestic Drakensberg Mountains was nothing short of miraculous! God blessed us with perfect weather, breathtaking views, and an outpouring of His presence that touched every heart.</p>
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <div className="header-content">
-          <img src="/logo.jpg" alt="Pentecostal Holiness Church Logo" className="logo" />
-          <h1>Pentecostal Holiness Church</h1>
-        </div>
-        <nav className={menuOpen ? 'nav-open' : ''}>
+                  <div className="event-highlights">
+                    <h5>🌟 Divine Blessings:</h5>
+                    <ul>
+                      <li><strong>Perfect Weather:</strong> Not a drop of rain fell during our entire trip, despite the forecast!</li>
+                      <li><strong>Spiritual Awakening:</strong> Daily devotionals brought us closer to God amidst His glorious creation</li>
+                      <li><strong>Community Building:</strong> Youth formed lifelong friendships and grew in faith together</li>
+                      <li><strong>Natural Wonders:</strong> Hiked stunning trails with cascading waterfalls and mountain vistas</li>
+                    </ul>
+                  </div>
+
+                  <div className="event-stories">
+                    <h5>📖 Testimonies of God's Goodness:</h5>
+                    <blockquote>"The sunrise over the mountains reminded me of God's faithfulness - new mercies every morning!" - Sarah, 16</blockquote>
+                    <blockquote>"Camping under the stars, worshiping our Creator - it was pure joy!" - Michael, 17</blockquote>
+                    <blockquote>"God protected us through every hike and blessed us with amazing fellowship!" - Jessica, 15</blockquote>
+                  </div>
+
+                  <div className="event-activities">
+                    <h5>🎉 Fun & Fellowship:</h5>
+                    <p>From campfire worship sessions and group games to stargazing and nature photography, every moment was filled with laughter, learning, and love. Our youth learned to trust God in new ways while creating memories that will last a lifetime!</p>
+                  </div>
+
+                  <div className="event-outcome">
+                    <h5>✨ Life-Changing Impact:</h5>
+                    <p>This blessed trip strengthened our youth's faith, built lasting relationships, and showed them that God's love is as vast as the Drakensberg mountains. Many committed to deeper walks with Christ and are excited about our next adventure!</p>
+                  </div>
+                </div>
+                <div className="event-footer">
           <ul>
             <li><a href="#home" onClick={() => navigateTo('home')}>Home</a></li>
             <li><a href="#announcements" onClick={() => navigateTo('announcements')}>Announcements</a></li>
+            <li><a href="#events" onClick={() => navigateTo('events')}>Events</a></li>
             <li><a href="#services" onClick={() => navigateTo('services')}>Services</a></li>
             <li><a href="#contact" onClick={() => navigateTo('contact')}>Contact</a></li>
           </ul>
