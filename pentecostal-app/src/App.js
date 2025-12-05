@@ -1211,7 +1211,11 @@ Email: pentecostalholychurch@gmail.com
                       </div>
                       <div className="form-group">
                         <label>Content</label>
-                        <textarea rows="4" placeholder="Write your announcement here..."></textarea>
+                        <textarea
+                          rows="4"
+                          placeholder="Write your announcement here..."
+                          style={{width: '100%', resize: 'none'}}
+                        ></textarea>
                       </div>
                       <div className="form-actions">
                         <button type="submit" className="save-btn">💾 Save Announcement</button>
