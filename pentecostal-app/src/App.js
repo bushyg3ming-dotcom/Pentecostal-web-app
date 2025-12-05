@@ -36,6 +36,15 @@ function App() {
   });
   const [registrationSubmitted, setRegistrationSubmitted] = useState(false);
 
+  // Login form state
+  const [loginForm, setLoginForm] = useState({
+    userType: '',
+    email: '',
+    password: '',
+    rememberMe: false
+  });
+  const [loginSubmitted, setLoginSubmitted] = useState(false);
+
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
@@ -423,6 +432,186 @@ Email: pentecostalholychurch@gmail.com
                   <h4>Pastor Sarah Brown</h4>
                   <p className="pastor-title">Women's Ministry Pastor</p>
                   <p className="pastor-specialty">Specializes in: Women's Issues, Family Ministry, Community Outreach</p>
+                </div>
+              </div>
+            </div>
+          </section>
+        );
+      case 'login':
+        return (
+          <section className="login">
+            <div className="login-intro">
+              <h2>Login to Your Account</h2>
+              <p>Access your personalized church dashboard to manage your spiritual journey, connect with your pastor, and stay updated with church activities.</p>
+            </div>
+
+            <div className="login-container">
+              {loginSubmitted ? (
+                <div className="success-message">
+                  <div className="success-icon">✅</div>
+                  <h3>Login Successful!</h3>
+                  <p>Welcome back! You are now logged in as a {loginForm.userType === 'pastor' ? 'Pastor' : 'Church Member'}.</p>
+                  <p>You can now access all member features and connect with our church community.</p>
+                </div>
+              ) : (
+                <form className="login-form" onSubmit={(e) => {
+                  e.preventDefault();
+                  console.log('Login submitted:', loginForm);
+                  setLoginSubmitted(true);
+                  setTimeout(() => {
+                    setLoginSubmitted(false);
+                    setLoginForm({
+                      userType: '',
+                      email: '',
+                      password: '',
+                      rememberMe: false
+                    });
+                  }, 3000);
+                }}>
+
+                  {/* User Type Selection */}
+                  <div className="form-section">
+                    <h3>I am logging in as:</h3>
+                    <div className="login-type-options">
+                      <label className="login-type-option">
+                        <input
+                          type="radio"
+                          name="loginUserType"
+                          value="pastor"
+                          checked={loginForm.userType === 'pastor'}
+                          onChange={(e) => setLoginForm(prev => ({ ...prev, userType: e.target.value }))}
+                          required
+                        />
+                        <span className="option-label">👨‍⚖️ Pastor - Access counseling dashboard</span>
+                      </label>
+                      <label className="login-type-option">
+                        <input
+                          type="radio"
+                          name="loginUserType"
+                          value="member"
+                          checked={loginForm.userType === 'member'}
+                          onChange={(e) => setLoginForm(prev => ({ ...prev, userType: e.target.value }))}
+                        />
+                        <span className="option-label">🙏 Church Member - Access spiritual resources</span>
+                      </label>
+                    </div>
+                  </div>
+
+                  {/* Login Credentials */}
+                  <div className="form-section">
+                    <h3>Account Credentials</h3>
+                    <div className="form-group">
+                      <label htmlFor="loginEmail">Email Address *</label>
+                      <input
+                        type="email"
+                        id="loginEmail"
+                        value={loginForm.email}
+                        onChange={(e) => setLoginForm(prev => ({ ...prev, email: e.target.value }))}
+                        required
+                        placeholder="your.email@example.com"
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label htmlFor="loginPassword">Password *</label>
+                      <input
+                        type="password"
+                        id="loginPassword"
+                        value={loginForm.password}
+                        onChange={(e) => setLoginForm(prev => ({ ...prev, password: e.target.value }))}
+                        required
+                        placeholder="Enter your password"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Remember Me and Links */}
+                  <div className="form-section login-options">
+                    <label className="remember-option">
+                      <input
+                        type="checkbox"
+                        checked={loginForm.rememberMe}
+                        onChange={(e) => setLoginForm(prev => ({ ...prev, rememberMe: e.target.checked }))}
+                      />
+                      <span className="remember-text">Remember me for 30 days</span>
+                    </label>
+
+                    <div className="login-links">
+                      <a href="#forgot-password" className="forgot-link">Forgot Password?</a>
+                      <a href="#register" onClick={() => navigateTo('register')} className="register-link">Need an Account?</a>
+                    </div>
+                  </div>
+
+                  <div className="form-actions">
+                    <button type="submit" className="login-submit-btn">
+                      🔐 Login to Account
+                    </button>
+                  </div>
+
+                  {/* Security Notice */}
+                  <div className="security-notice">
+                    <p>🔒 <strong>Secure Login:</strong> Your login credentials are encrypted and protected. All church communications follow strict privacy guidelines.</p>
+                  </div>
+                </form>
+              )}
+            </div>
+
+            <div className="login-features">
+              <h3>Member Dashboard Features</h3>
+              <div className="features-grid">
+                <div className="feature-card">
+                  <div className="feature-icon">📖</div>
+                  <h4>Spiritual Resources</h4>
+                  <p>Access daily devotionals, Bible study materials, and spiritual growth resources.</p>
+                </div>
+                <div className="feature-card">
+                  <div className="feature-icon">🙏</div>
+                  <h4>Pastoral Care</h4>
+                  <p>Direct communication with your assigned pastor for guidance and prayer support.</p>
+                </div>
+                <div className="feature-card">
+                  <div className="feature-icon">📅</div>
+                  <h4>Event Management</h4>
+                  <p>Register for church events, track attendance, and receive personalized event notifications.</p>
+                </div>
+                <div className="feature-card">
+                  <div className="feature-icon">👥</div>
+                  <h4>Community Hub</h4>
+                  <p>Connect with fellow church members, join small groups, and participate in ministry activities.</p>
+                </div>
+                {loginForm.userType === 'pastor' && (
+                  <>
+                    <div className="feature-card pastor-feature">
+                      <div className="feature-icon">🎓</div>
+                      <h4>Counseling Dashboard</h4>
+                      <p>Manage counseling sessions, view prayer requests, and access member care resources.</p>
+                    </div>
+                    <div className="feature-card pastor-feature">
+                      <div className="feature-icon">📊</div>
+                      <h4>Ministry Reports</h4>
+                      <p>Track ministry activities, generate reports, and monitor church growth metrics.</p>
+                    </div>
+                  </>
+                )}
+              </div>
+            </div>
+
+            <div className="login-support">
+              <h3>Need Help?</h3>
+              <div className="support-options">
+                <div className="support-card">
+                  <h4>🔑 Forgot Your Password?</h4>
+                  <p>Click the "Forgot Password" link above or contact our IT support team.</p>
+                  <p><strong>Email:</strong> support@pentecostalholiness.org</p>
+                </div>
+                <div className="support-card">
+                  <h4>📞 Technical Support</h4>
+                  <p>Having trouble logging in? Our support team is here to help.</p>
+                  <p><strong>Phone:</strong> (123) 456-7890 ext. 100</p>
+                </div>
+                <div className="support-card">
+                  <h4>🛡️ Account Security</h4>
+                  <p>Your account security is our top priority. Learn about our security measures.</p>
+                  <a href="#security" className="security-link">Read Security Guidelines</a>
                 </div>
               </div>
             </div>
