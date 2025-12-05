@@ -1495,3 +1495,115 @@ Email: pentecostalholychurch@gmail.com
                       <div className="form-section">
                         <label className="privacy-option">
                           <input type="checkbox" />
+                          <span className="privacy-text">
+                            🔒 Send Anonymously
+                            <small>Your pastor will not see your name or contact information</small>
+                          </span>
+                        </label>
+                      </div>
+
+                      <div className="form-section">
+                        <label htmlFor="userMessage">Your Message *</label>
+                        <textarea
+                          id="userMessage"
+                          required
+                          placeholder="Share what's on your heart. Your pastor will respond with care and confidentiality."
+                          rows="6"
+                        />
+                      </div>
+
+                      <div className="form-actions">
+                        <button type="submit" className="send-message-btn">
+                          📤 Send to Pastor
+                        </button>
+                        <p className="response-note">
+                          <small>✨ Your pastor typically responds within 24-48 hours. For urgent matters, please call the church office.</small>
+                        </p>
+                      </div>
+                    </form>
+                  </div>
+
+                  <div className="quick-actions">
+                    <h4>Quick Actions</h4>
+                    <div className="action-buttons">
+                      <button className="quick-btn" onClick={() => navigateTo('ask-pastor')}>
+                        🙏 Ask a Pastor (Public)
+                      </button>
+                      <button className="quick-btn" onClick={() => navigateTo('announcements')}>
+                        📢 View Announcements
+                      </button>
+                      <button className="quick-btn" onClick={() => navigateTo('events')}>
+                        🎪 Upcoming Events
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <div className="spiritual-resources">
+              <h3>Your Spiritual Resources</h3>
+              <div className="resources-grid">
+                <div className="resource-card">
+                  <div className="resource-icon">📖</div>
+                  <h4>Daily Scripture</h4>
+                  <p>{dailyVerse}</p>
+                </div>
+                <div className="resource-card">
+                  <div className="resource-icon">🙏</div>
+                  <h4>Prayer Support</h4>
+                  <p>24/7 prayer support available. Your pastors are here for you.</p>
+                </div>
+                <div className="resource-card">
+                  <div className="resource-icon">👥</div>
+                  <h4>Church Community</h4>
+                  <p>Connect with fellow believers and grow together in faith.</p>
+                </div>
+                <div className="resource-card">
+                  <div className="resource-icon">🎵</div>
+                  <h4>Worship Services</h4>
+                  <p>Sunday Worship: 10 AM | Wednesday Prayer: 7 PM</p>
+                </div>
+              </div>
+            </div>
+          </section>
+        );
+      default:
+        return null;
+    }
+  };
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        <div className="header-content">
+          <img src="/logo.jpg" alt="Pentecostal Holiness Church Logo" className="logo" />
+          <h1>Pentecostal Holiness Church</h1>
+        </div>
+        <nav className={menuOpen ? 'nav-open' : ''}>
+          <ul>
+            <li><a href="#home" onClick={() => navigateTo('home')}>Home</a></li>
+            <li><a href="#announcements" onClick={() => navigateTo('announcements')}>Announcements</a></li>
+            <li><a href="#events" onClick={() => navigateTo('events')}>Events</a></li>
+            <li><a href="#ask-pastor" onClick={() => navigateTo('ask-pastor')}>Ask a Pastor</a></li>
+            <li><a href="#login" onClick={() => navigateTo('login')}>Login</a></li>
+            <li><a href="#register" onClick={() => navigateTo('register')}>Register</a></li>
+          </ul>
+        </nav>
+        <button className="burger" onClick={toggleMenu}>
+          <span className="bar"></span>
+          <span className="bar"></span>
+          <span className="bar"></span>
+        </button>
+      </header>
+      <main>
+        {renderPage()}
+      </main>
+      <footer>
+        <p>&copy; 2025 Pentecostal Holiness Church. All rights reserved.</p>
+      </footer>
+    </div>
+  );
+}
+
+export default App;
