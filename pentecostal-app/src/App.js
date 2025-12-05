@@ -1901,10 +1901,11 @@ allowFullScreen>
                         <h4>Choose Your Pastor</h4>
                         <select required className="pastor-select">
                           <option value="">Select a Pastor</option>
-                          <option value="pastor-john">Pastor John Smith - Lead Pastor</option>
-                          <option value="pastor-mary">Pastor Mary Johnson - Associate Pastor</option>
-                          <option value="pastor-david">Pastor David Williams - Youth Pastor</option>
-                          <option value="pastor-sarah">Pastor Sarah Brown - Women's Ministry</option>
+                          {registeredPastors.map(pastor => (
+                            <option key={pastor.id} value={pastor.id}>
+                              Pastor {pastor.firstName} {pastor.lastName} - {pastor.title}
+                            </option>
+                          ))}
                         </select>
                       </div>
 
