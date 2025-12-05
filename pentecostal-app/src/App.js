@@ -1376,28 +1376,47 @@ Email: pentecostalholychurch@gmail.com
                     <div className="stream-preview">
                       <h4>Current Live Stream</h4>
                       <div className="youtube-embed-container">
-                        <div className="youtube-placeholder-admin">
-                          <div className="stream-status-admin">
-                            <div className="status-indicator-admin offline"></div>
-                            <span>No Live Stream Active</span>
-                          </div>
-                          <div className="embed-instructions">
-                            <h5>📺 YouTube Live Embed Instructions</h5>
-                            <p>To start streaming, go to your YouTube Live Dashboard and get your stream key, then use the embed code below:</p>
-                            <div className="embed-code">
-                              <code>
-{`<iframe width="560" height="315" 
-src="https://www.youtube.com/embed/YOUR_STREAM_ID" 
-title="Pentecostal Holiness Church Live Stream" 
-frameBorder="0" 
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-allowFullScreen>
-</iframe>`}
-                              </code>
+                        {youtubeUrl && extractVideoId(youtubeUrl) ? (
+                          <iframe
+                            width="560"
+                            height="315"
+                            src={`https://www.youtube.com/embed/${extractVideoId(youtubeUrl)}`}
+                            title="Pentecostal Holiness Church Live Stream"
+                            frameBorder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                          ></iframe>
+                        ) : (
+                          <div className="youtube-placeholder-admin">
+                            <div className="stream-status-admin">
+                              <div className="status-indicator-admin offline"></div>
+                              <span>No Live Stream Active</span>
                             </div>
-                            <p><strong>Replace YOUR_STREAM_ID with your actual YouTube live stream ID.</strong></p>
+                            <div className="embed-instructions">
+                              <h5>📺 Set Up Live Stream</h5>
+                              <p>Paste your YouTube live stream URL below to embed it in the church website:</p>
+                              <div className="form-group">
+                                <label htmlFor="youtube-url">YouTube Live Stream URL</label>
+                                <input
+                                  type="url"
+                                  id="youtube-url"
+                                  value={youtubeUrl}
+                                  onChange={(e) => setYoutubeUrl(e.target.value)}
+                                  placeholder="https://www.youtube.com/watch?v=VIDEO_ID or https://youtu.be/VIDEO_ID"
+                                  className="youtube-url-input"
+                                />
+                              </div>
+                              <p className="url-help">
+                                <small>💡 Get this URL from your YouTube Live Dashboard when your stream is active</small>
+                              </p>
+                              {youtubeUrl && !extractVideoId(youtubeUrl) && (
+                                <p className="error-message">
+                                  <small>❌ Invalid YouTube URL. Please check and try again.</small>
+                                </p>
+                              )}
+                            </div>
                           </div>
-                        </div>
+                        )}
                       </div>
                     </div>
 
