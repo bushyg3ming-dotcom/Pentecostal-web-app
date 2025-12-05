@@ -144,7 +144,7 @@ Email: pentecostalholychurch@gmail.com
                 <div className="cross-icon">✝</div>
                 <h2>Welcome to Our Church</h2>
                 <p>Join us in worship and fellowship as we grow in faith together.</p>
-                <button className="cta-button">Join Our Community</button>
+                <button className="cta-button" onClick={() => navigateTo('register')}>Join Our Community</button>
               </div>
             </section>
             <div className="verse-card">
