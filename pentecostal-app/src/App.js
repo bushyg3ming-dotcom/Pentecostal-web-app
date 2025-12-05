@@ -1166,3 +1166,230 @@ Email: pentecostalholychurch@gmail.com
                         <div className="newsletter-section-editor">
                           <h5>Sunday Worship Schedule</h5>
                           <textarea rows="3" placeholder="List upcoming services and special events..."></textarea>
+                        </div>
+                        <div className="newsletter-section-editor">
+                          <h5>Upcoming Events</h5>
+                          <textarea rows="3" placeholder="Highlight important upcoming events..."></textarea>
+                        </div>
+                        <div className="newsletter-section-editor">
+                          <h5>Scripture Reading</h5>
+                          <textarea rows="3" placeholder="Weekly scripture focus and daily verse..."></textarea>
+                        </div>
+                        <div className="newsletter-section-editor">
+                          <h5>Prayer Requests</h5>
+                          <textarea rows="3" placeholder="General prayer concerns and praises..."></textarea>
+                        </div>
+                      </div>
+
+                      <div className="form-actions">
+                        <button type="submit" className="save-btn">💾 Save Newsletter</button>
+                        <button type="button" className="download-btn">📄 Download PDF</button>
+                        <button type="button" className="preview-btn">👁️ Preview</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              )}
+
+              {dashboardTab === 'events' && (
+                <div className="events-section">
+                  <h3>Manage Church Events</h3>
+                  <div className="event-editor">
+                    <form className="editor-form">
+                      <div className="form-row">
+                        <div className="form-group">
+                          <label>Event Title</label>
+                          <input type="text" placeholder="Youth Camping Trip" />
+                        </div>
+                        <div className="form-group">
+                          <label>Event Date</label>
+                          <input type="date" />
+                        </div>
+                      </div>
+
+                      <div className="form-row">
+                        <div className="form-group">
+                          <label>Event Type</label>
+                          <select>
+                            <option>Youth Event</option>
+                            <option>Family Event</option>
+                            <option>Prayer Meeting</option>
+                            <option>Community Service</option>
+                            <option>Special Service</option>
+                          </select>
+                        </div>
+                        <div className="form-group">
+                          <label>Status</label>
+                          <select>
+                            <option>Upcoming</option>
+                            <option>Ongoing</option>
+                            <option>Completed</option>
+                            <option>Cancelled</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <div className="form-group">
+                        <label>Event Description</label>
+                        <textarea rows="4" placeholder="Detailed description of the event..."></textarea>
+                      </div>
+
+                      <div className="form-group">
+                        <label>Event Image</label>
+                        <div className="image-upload">
+                          <input type="file" accept="image/*" id="event-image" />
+                          <label htmlFor="event-image" className="upload-btn">
+                            📷 Choose Image
+                          </label>
+                          <span className="upload-note">Max file size: 5MB. Formats: JPG, PNG, GIF</span>
+                        </div>
+                      </div>
+
+                      <div className="form-actions">
+                        <button type="submit" className="save-btn">💾 Save Event</button>
+                        <button type="button" className="preview-btn">👁️ Preview</button>
+                      </div>
+                    </form>
+                  </div>
+
+                  <div className="current-events">
+                    <h4>Current Events</h4>
+                    <div className="events-preview">
+                      <div className="event-preview-card">
+                        <div className="event-image-preview">🏔️</div>
+                        <div className="event-details">
+                          <h5>Youth Camping Trip to Drakensberg</h5>
+                          <p>December 2025</p>
+                          <p className="event-status">Completed</p>
+                        </div>
+                        <div className="event-actions">
+                          <button className="edit-btn">✏️ Edit</button>
+                          <button className="delete-btn">🗑️ Delete</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {dashboardTab === 'admin' && userRole === 'admin' && (
+                <div className="admin-section">
+                  <h3>⚙️ Administration Panel</h3>
+                  <div className="admin-stats">
+                    <div className="stat-card">
+                      <h4>👥 Total Members</h4>
+                      <div className="stat-number">247</div>
+                    </div>
+                    <div className="stat-card">
+                      <h4>👨‍⚖️ Active Pastors</h4>
+                      <div className="stat-number">4</div>
+                    </div>
+                    <div className="stat-card">
+                      <h4>📬 Messages This Week</h4>
+                      <div className="stat-number">25</div>
+                    </div>
+                    <div className="stat-card">
+                      <h4>🎪 Upcoming Events</h4>
+                      <div className="stat-number">3</div>
+                    </div>
+                  </div>
+
+                  <div className="admin-tools">
+                    <h4>User Management</h4>
+                    <div className="user-management">
+                      <div className="user-list">
+                        <h5>Congregation Members</h5>
+                        <div className="user-item">
+                          <span>Sarah Johnson</span>
+                          <span className="user-status">Active</span>
+                          <button className="delete-user-btn">🗑️ Remove</button>
+                        </div>
+                        <div className="user-item">
+                          <span>Michael Davis</span>
+                          <span className="user-status">Active</span>
+                          <button className="delete-user-btn">🗑️ Remove</button>
+                        </div>
+                        <div className="user-item">
+                          <span>Jessica Brown</span>
+                          <span className="user-status">Inactive</span>
+                          <button className="delete-user-btn">🗑️ Remove</button>
+                        </div>
+                      </div>
+
+                      <div className="user-list">
+                        <h5>Pastor Accounts</h5>
+                        <div className="user-item">
+                          <span>Pastor Mary Johnson</span>
+                          <span className="user-status">Active</span>
+                          <button className="delete-user-btn">🗑️ Remove</button>
+                        </div>
+                        <div className="user-item">
+                          <span>Pastor David Williams</span>
+                          <span className="user-status">Active</span>
+                          <button className="delete-user-btn">🗑️ Remove</button>
+                        </div>
+                        <div className="user-item">
+                          <span>Pastor Sarah Brown</span>
+                          <span className="user-status">Active</span>
+                          <button className="delete-user-btn">🗑️ Remove</button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="admin-actions">
+                      <h5>System Administration</h5>
+                      <div className="admin-buttons">
+                        <button className="admin-btn">📊 Generate Reports</button>
+                        <button className="admin-btn">📧 Send Bulk Email</button>
+                        <button className="admin-btn">💾 Backup Data</button>
+                        <button className="admin-btn">⚙️ System Settings</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          </section>
+        );
+      default:
+        return null;
+        );
+      default:
+        return null;
+    }
+  };
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        <div className="header-content">
+          <img src="/logo.jpg" alt="Pentecostal Holiness Church Logo" className="logo" />
+          <h1>Pentecostal Holiness Church</h1>
+        </div>
+        <nav className={menuOpen ? 'nav-open' : ''}>
+          <ul>
+            <li><a href="#home" onClick={() => navigateTo('home')}>Home</a></li>
+            <li><a href="#announcements" onClick={() => navigateTo('announcements')}>Announcements</a></li>
+            <li><a href="#events" onClick={() => navigateTo('events')}>Events</a></li>
+            <li><a href="#ask-pastor" onClick={() => navigateTo('ask-pastor')}>Ask a Pastor</a></li>
+            <li><a href="#login" onClick={() => navigateTo('login')}>Login</a></li>
+            <li><a href="#register" onClick={() => navigateTo('register')}>Register</a></li>
+          </ul>
+        </nav>
+        <button className="burger" onClick={toggleMenu}>
+          <span className="bar"></span>
+          <span className="bar"></span>
+          <span className="bar"></span>
+        </button>
+      </header>
+      <main>
+        {renderPage()}
+      </main>
+      <footer>
+        <p>&copy; 2025 Pentecostal Holiness Church. All rights reserved.</p>
+      </footer>
+    </div>
+  );
+}
+
+export default App;
