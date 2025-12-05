@@ -1404,11 +1404,12 @@ allowFullScreen>
                           <div className="form-group">
                             <label>Speaker</label>
                             <select>
-                              <option>Pastor John Smith</option>
-                              <option>Pastor Mary Johnson</option>
-                              <option>Pastor David Williams</option>
-                              <option>Pastor Sarah Brown</option>
                               <option>Guest Speaker</option>
+                              {registeredPastors.map(pastor => (
+                                <option key={pastor.id}>
+                                  Pastor {pastor.firstName} {pastor.lastName}
+                                </option>
+                              ))}
                             </select>
                           </div>
                           <div className="form-group">
