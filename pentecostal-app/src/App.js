@@ -104,6 +104,9 @@ function App() {
   const [userRole, setUserRole] = useState(''); // 'pastor' or 'admin'
   const [dashboardTab, setDashboardTab] = useState('messages');
 
+  // Live stream state
+  const [youtubeUrl, setYoutubeUrl] = useState('');
+
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
@@ -184,6 +187,21 @@ Email: pentecostalholychurch@gmail.com
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
+  };
+
+  const extractVideoId = (url) => {
+    const patterns = [
+      /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/,
+      /(?:https?:\/\/)?(?:www\.)?youtube\.com\/embed\/([^"&?\/\s]{11})/
+    ];
+
+    for (const pattern of patterns) {
+      const match = url.match(pattern);
+      if (match && match[1]) {
+        return match[1];
+      }
+    }
+    return null;
   };
 
   const renderPage = () => {
