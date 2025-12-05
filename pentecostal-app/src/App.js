@@ -473,30 +473,22 @@ Email: pentecostalholychurch@gmail.com
             <div className="pastor-info">
               <h3>Meet Our Pastors</h3>
               <div className="pastors-grid">
-                <div className="pastor-card">
-                  <div className="pastor-avatar">👨‍⚖️</div>
-                  <h4>Pastor John Smith</h4>
-                  <p className="pastor-title">Lead Pastor</p>
-                  <p className="pastor-specialty">Specializes in: Biblical Teaching, Marriage Counseling, Leadership Development</p>
-                </div>
-                <div className="pastor-card">
-                  <div className="pastor-avatar">👩‍⚖️</div>
-                  <h4>Pastor Mary Johnson</h4>
-                  <p className="pastor-title">Associate Pastor</p>
-                  <p className="pastor-specialty">Specializes in: Women's Ministry, Prayer Ministry, Spiritual Direction</p>
-                </div>
-                <div className="pastor-card">
-                  <div className="pastor-avatar">👨‍🎓</div>
-                  <h4>Pastor David Williams</h4>
-                  <p className="pastor-title">Youth Pastor</p>
-                  <p className="pastor-specialty">Specializes in: Youth Ministry, Teen Counseling, Discipleship</p>
-                </div>
-                <div className="pastor-card">
-                  <div className="pastor-avatar">👩‍💼</div>
-                  <h4>Pastor Sarah Brown</h4>
-                  <p className="pastor-title">Women's Ministry Pastor</p>
-                  <p className="pastor-specialty">Specializes in: Women's Issues, Family Ministry, Community Outreach</p>
-                </div>
+                {registeredPastors.map(pastor => (
+                  <div key={pastor.id} className="pastor-card">
+                    <div className="pastor-avatar">
+                      {pastor.title === 'Lead Pastor' ? '👨‍⚖️' :
+                       pastor.title === 'Associate Pastor' ? '👩‍⚖️' :
+                       pastor.title === 'Youth Pastor' ? '👨‍🎓' :
+                       pastor.title === 'Women\'s Ministry Pastor' ? '👩‍💼' :
+                       pastor.title === 'Ordained Pastor' ? '👨‍⚖️' :
+                       pastor.title === 'Lay Minister' ? '🙏' :
+                       pastor.title === 'Ministry Student' ? '📚' : '👤'}
+                    </div>
+                    <h4>Pastor {pastor.firstName} {pastor.lastName}</h4>
+                    <p className="pastor-title">{pastor.title}</p>
+                    <p className="pastor-specialty">Specializes in: {pastor.specializations.join(', ')}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </section>
