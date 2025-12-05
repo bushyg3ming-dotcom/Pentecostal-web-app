@@ -475,6 +475,10 @@ Email: pentecostalholychurch@gmail.com
                     }
                     setIsLoggedIn(true);
                     setCurrentPage('dashboard');
+                  } else if (loginForm.userType === 'member') {
+                    setUserRole('member');
+                    setIsLoggedIn(true);
+                    setCurrentPage('user-dashboard');
                   } else {
                     setLoginSubmitted(true);
                     setTimeout(() => {
@@ -1351,42 +1355,143 @@ Email: pentecostalholychurch@gmail.com
             </div>
           </section>
         );
-      default:
-        return null;
-    }
-  };
+      case 'user-dashboard':
+        return (
+          <section className="user-dashboard">
+            <div className="dashboard-header">
+              <div className="dashboard-welcome">
+                <h2>🙏 My Spiritual Journey</h2>
+                <p>Welcome back, Church Member! Connect with your pastors and grow in faith.</p>
+              </div>
+              <div className="dashboard-actions">
+                <button
+                  className="logout-btn"
+                  onClick={() => {
+                    setIsLoggedIn(false);
+                    setUserRole('');
+                    setCurrentPage('home');
+                  }}
+                >
+                  🚪 Logout
+                </button>
+              </div>
+            </div>
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <div className="header-content">
-          <img src="/logo.jpg" alt="Pentecostal Holiness Church Logo" className="logo" />
-          <h1>Pentecostal Holiness Church</h1>
-        </div>
-        <nav className={menuOpen ? 'nav-open' : ''}>
-          <ul>
-            <li><a href="#home" onClick={() => navigateTo('home')}>Home</a></li>
-            <li><a href="#announcements" onClick={() => navigateTo('announcements')}>Announcements</a></li>
-            <li><a href="#events" onClick={() => navigateTo('events')}>Events</a></li>
-            <li><a href="#ask-pastor" onClick={() => navigateTo('ask-pastor')}>Ask a Pastor</a></li>
-            <li><a href="#login" onClick={() => navigateTo('login')}>Login</a></li>
-            <li><a href="#register" onClick={() => navigateTo('register')}>Register</a></li>
-          </ul>
-        </nav>
-        <button className="burger" onClick={toggleMenu}>
-          <span className="bar"></span>
-          <span className="bar"></span>
-          <span className="bar"></span>
-        </button>
-      </header>
-      <main>
-        {renderPage()}
-      </main>
-      <footer>
-        <p>&copy; 2025 Pentecostal Holiness Church. All rights reserved.</p>
-      </footer>
-    </div>
-  );
-}
+            <div className="dashboard-tabs">
+              <button
+                className={`tab-btn ${dashboardTab === 'messages' ? 'active' : ''}`}
+                onClick={() => setDashboardTab('messages')}
+              >
+                📬 My Messages (3)
+              </button>
+              <button
+                className={`tab-btn ${dashboardTab === 'send' ? 'active' : ''}`}
+                onClick={() => setDashboardTab('send')}
+              >
+                ✉️ Send Message
+              </button>
+            </div>
 
-export default App;
+            <div className="dashboard-content">
+              {dashboardTab === 'messages' && (
+                <div className="user-messages-section">
+                  <h3>My Messages & Responses</h3>
+                  <div className="messages-list">
+                    <div className="message-card response">
+                      <div className="message-header">
+                        <h4>🙏 Response from Pastor Mary Johnson</h4>
+                        <span className="message-date">Today, 10:30 AM</span>
+                      </div>
+                      <p className="message-content">Dear Sarah, Thank you for sharing your prayer request. I have lifted your mother up in prayer and asked our prayer team to join me. Please know that God is with you during this time. If you need someone to talk to or visit, please don't hesitate to reach out. May God's peace surround you. - Pastor Mary</p>
+                      <div className="message-actions">
+                        <button className="respond-btn">📝 Reply</button>
+                        <button className="thank-btn">🙏 Thank You</button>
+                      </div>
+                    </div>
+
+                    <div className="message-card sent">
+                      <div className="message-header">
+                        <h4>📖 Biblical Guidance Request - Sent</h4>
+                        <span className="message-date">Yesterday, 2:15 PM</span>
+                      </div>
+                      <p className="message-content">I'm struggling with forgiveness in my marriage. Can you recommend some Bible verses and advice?</p>
+                      <div className="message-status">
+                        <span className="status-badge">✅ Read by Pastor</span>
+                        <span className="response-time">Response expected within 24-48 hours</span>
+                      </div>
+                    </div>
+
+                    <div className="message-card sent">
+                      <div className="message-header">
+                        <h4>🙏 Prayer Request - Sent</h4>
+                        <span className="message-date">Dec 2, 9:00 AM</span>
+                      </div>
+                      <p className="message-content">Please pray for guidance as I make a big career decision. I need wisdom and peace.</p>
+                      <div className="message-status">
+                        <span className="status-badge">✅ Read by Pastor</span>
+                        <span className="response-time">Response expected within 24-48 hours</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {dashboardTab === 'send' && (
+                <div className="send-message-section">
+                  <h3>Send a Message to Your Pastor</h3>
+                  <div className="message-form-container">
+                    <form className="message-form" onSubmit={(e) => {
+                      e.preventDefault();
+                      // Simulate sending message
+                      alert('Your message has been sent to your pastor! You will receive a response within 24-48 hours.');
+                      setDashboardTab('messages');
+                    }}>
+
+                      <div className="form-section">
+                        <h4>Choose Your Pastor</h4>
+                        <select required className="pastor-select">
+                          <option value="">Select a Pastor</option>
+                          <option value="pastor-john">Pastor John Smith - Lead Pastor</option>
+                          <option value="pastor-mary">Pastor Mary Johnson - Associate Pastor</option>
+                          <option value="pastor-david">Pastor David Williams - Youth Pastor</option>
+                          <option value="pastor-sarah">Pastor Sarah Brown - Women's Ministry</option>
+                        </select>
+                      </div>
+
+                      <div className="form-section">
+                        <h4>Type of Message</h4>
+                        <div className="message-type-options">
+                          <label className="message-type-option">
+                            <input
+                              type="radio"
+                              name="messageType"
+                              value="advice"
+                              defaultChecked
+                              required
+                            />
+                            <span className="option-label">📖 Biblical Advice & Guidance</span>
+                          </label>
+                          <label className="message-type-option">
+                            <input
+                              type="radio"
+                              name="messageType"
+                              value="prayer"
+                              required
+                            />
+                            <span className="option-label">🙏 Prayer Request</span>
+                          </label>
+                          <label className="message-type-option">
+                            <input
+                              type="radio"
+                              name="messageType"
+                              value="general"
+                              required
+                            />
+                            <span className="option-label">💬 General Message</span>
+                          </label>
+                        </div>
+                      </div>
+
+                      <div className="form-section">
+                        <label className="privacy-option">
+                          <input type="checkbox" />
