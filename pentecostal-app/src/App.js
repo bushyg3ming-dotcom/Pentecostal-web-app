@@ -47,6 +47,11 @@ function App() {
   });
   const [loginSubmitted, setLoginSubmitted] = useState(false);
 
+  // Dashboard state
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userRole, setUserRole] = useState(''); // 'pastor' or 'admin'
+  const [dashboardTab, setDashboardTab] = useState('messages');
+
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
