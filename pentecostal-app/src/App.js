@@ -428,26 +428,6 @@ Email: pentecostalholychurch@gmail.com
             </div>
           </section>
         );
-      case 'services':
-        return (
-          <section id="services" className="services">
-            <h2>Our Services</h2>
-            <div className="service-cards">
-              <div className="service-card">
-                <h3>Sunday Worship</h3>
-                <p>Join us every Sunday at 10 AM for an inspiring worship service filled with praise, prayer, and the Word of God.</p>
-              </div>
-              <div className="service-card">
-                <h3>Wednesday Prayer</h3>
-                <p>Come together in prayer every Wednesday at 7 PM to seek God's guidance and intercede for our community.</p>
-              </div>
-              <div className="service-card">
-                <h3>Bible Study</h3>
-                <p>Deepen your understanding of Scripture during our Thursday Bible Study sessions at 6 PM.</p>
-              </div>
-            </div>
-          </section>
-        );
       case 'register':
         return (
           <section className="register">
