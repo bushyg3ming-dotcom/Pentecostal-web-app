@@ -1085,3 +1085,257 @@ footer {
     padding: 0.8rem;
   }
 }
+
+.register {
+  padding: 4rem 2rem;
+  background: #f8f9fa;
+  min-height: calc(100vh - 200px);
+}
+
+.register-intro {
+  text-align: center;
+  margin-bottom: 3rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.register-intro h2 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.register-intro p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #666;
+}
+
+.register-container {
+  background: white;
+  border-radius: 15px;
+  padding: 3rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  margin-bottom: 4rem;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.register-form {
+  max-width: 100%;
+}
+
+.user-type-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.user-type-option {
+  background: #f8f9fa;
+  border: 2px solid #e9ecef;
+  border-radius: 15px;
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.user-type-option:hover {
+  border-color: #667eea;
+  background: rgba(102, 126, 234, 0.05);
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+}
+
+.user-type-option.selected {
+  border-color: #667eea;
+  background: rgba(102, 126, 234, 0.1);
+}
+
+.user-type-option input[type="radio"] {
+  display: none;
+}
+
+.option-label {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+  display: block;
+  margin-top: 1rem;
+}
+
+.checkbox-option {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.8rem;
+}
+
+.checkbox-option input[type="checkbox"] {
+  margin-right: 0.8rem;
+  transform: scale(1.1);
+}
+
+.checkbox-label {
+  font-weight: 500;
+  color: #555;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.8rem;
+}
+
+.radio-option input[type="radio"] {
+  margin-right: 0.8rem;
+  transform: scale(1.1);
+}
+
+.radio-label {
+  font-weight: 500;
+  color: #555;
+}
+
+.specialization-options,
+.interest-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.8rem;
+}
+
+.terms-option {
+  background: #f8f9fa;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-top: 2rem;
+}
+
+.terms-option input[type="checkbox"] {
+  margin-right: 1rem;
+  transform: scale(1.2);
+  margin-top: 0.2rem;
+}
+
+.terms-text {
+  color: #666;
+  line-height: 1.5;
+}
+
+.terms-text a {
+  color: #667eea;
+  text-decoration: none;
+}
+
+.terms-text a:hover {
+  text-decoration: underline;
+}
+
+.register-submit-btn {
+  background: #667eea;
+  color: white;
+  padding: 1.2rem 3rem;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.register-submit-btn:hover {
+  background: #5a6fd8;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.registration-benefits {
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.registration-benefits h3 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 3rem;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.benefit-card {
+  background: white;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.benefit-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.benefit-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.benefit-card h4 {
+  color: #667eea;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.benefit-card p {
+  color: #666;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .register {
+    padding: 3rem 1rem;
+  }
+
+  .register-intro h2 {
+    font-size: 2rem;
+  }
+
+  .register-container {
+    padding: 2rem 1.5rem;
+  }
+
+  .user-type-options {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .user-type-option {
+    padding: 1.5rem;
+  }
+
+  .specialization-options,
+  .interest-options {
+    grid-template-columns: 1fr;
+  }
+
+  .benefits-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .benefit-card {
+    padding: 1.5rem;
+  }
+}

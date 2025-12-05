@@ -17,6 +17,25 @@ function App() {
   });
   const [formSubmitted, setFormSubmitted] = useState(false);
 
+  // Registration form state
+  const [registrationForm, setRegistrationForm] = useState({
+    userType: '',
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    // Pastor specific fields
+    ordinationStatus: '',
+    yearsExperience: '',
+    specializations: [],
+    availability: '',
+    // Congregation member specific fields
+    membershipStatus: '',
+    preferredCommunication: '',
+    interests: []
+  });
+  const [registrationSubmitted, setRegistrationSubmitted] = useState(false);
+
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
@@ -425,6 +444,337 @@ Email: pentecostalholychurch@gmail.com
               <div className="service-card">
                 <h3>Bible Study</h3>
                 <p>Deepen your understanding of Scripture during our Thursday Bible Study sessions at 6 PM.</p>
+              </div>
+            </div>
+          </section>
+        );
+      case 'register':
+        return (
+          <section className="register">
+            <div className="register-intro">
+              <h2>Join Our Community</h2>
+              <p>Register to connect with our church family. Whether you're a pastor looking to serve or a member seeking spiritual guidance, we're here to support your faith journey.</p>
+            </div>
+
+            <div className="register-container">
+              {registrationSubmitted ? (
+                <div className="success-message">
+                  <div className="success-icon">🙏</div>
+                  <h3>Welcome to Our Church Family!</h3>
+                  <p>Thank you for registering with Pentecostal Holiness Church. {registrationForm.userType === 'pastor' ?
+                    'Your pastor registration has been submitted for review. We will contact you soon about serving opportunities.' :
+                    'Your registration is complete! You can now access the "Ask a Pastor" feature to seek spiritual guidance and prayer support.'
+                  }</p>
+                  <p>God bless you on your faith journey!</p>
+                </div>
+              ) : (
+                <form className="register-form" onSubmit={(e) => {
+                  e.preventDefault();
+                  console.log('Registration submitted:', registrationForm);
+                  setRegistrationSubmitted(true);
+                  setTimeout(() => {
+                    setRegistrationSubmitted(false);
+                    setRegistrationForm({
+                      userType: '',
+                      firstName: '',
+                      lastName: '',
+                      email: '',
+                      phone: '',
+                      ordinationStatus: '',
+                      yearsExperience: '',
+                      specializations: [],
+                      availability: '',
+                      membershipStatus: '',
+                      preferredCommunication: '',
+                      interests: []
+                    });
+                  }, 3000);
+                }}>
+
+                  {/* User Type Selection */}
+                  <div className="form-section">
+                    <h3>I am registering as:</h3>
+                    <div className="user-type-options">
+                      <label className="user-type-option">
+                        <input
+                          type="radio"
+                          name="userType"
+                          value="pastor"
+                          checked={registrationForm.userType === 'pastor'}
+                          onChange={(e) => setRegistrationForm(prev => ({ ...prev, userType: e.target.value }))}
+                          required
+                        />
+                        <span className="option-label">👨‍⚖️ Pastor - Register to serve and provide spiritual guidance</span>
+                      </label>
+                      <label className="user-type-option">
+                        <input
+                          type="radio"
+                          name="userType"
+                          value="member"
+                          checked={registrationForm.userType === 'member'}
+                          onChange={(e) => setRegistrationForm(prev => ({ ...prev, userType: e.target.value }))}
+                        />
+                        <span className="option-label">🙏 Congregation Member - Register to seek advice and prayer support</span>
+                      </label>
+                    </div>
+                  </div>
+
+                  {/* Basic Information */}
+                  <div className="form-section">
+                    <h3>Basic Information</h3>
+                    <div className="form-row">
+                      <div className="form-group">
+                        <label htmlFor="firstName">First Name *</label>
+                        <input
+                          type="text"
+                          id="firstName"
+                          value={registrationForm.firstName}
+                          onChange={(e) => setRegistrationForm(prev => ({ ...prev, firstName: e.target.value }))}
+                          required
+                          placeholder="Your first name"
+                        />
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="lastName">Last Name *</label>
+                        <input
+                          type="text"
+                          id="lastName"
+                          value={registrationForm.lastName}
+                          onChange={(e) => setRegistrationForm(prev => ({ ...prev, lastName: e.target.value }))}
+                          required
+                          placeholder="Your last name"
+                        />
+                      </div>
+                    </div>
+                    <div className="form-row">
+                      <div className="form-group">
+                        <label htmlFor="regEmail">Email *</label>
+                        <input
+                          type="email"
+                          id="regEmail"
+                          value={registrationForm.email}
+                          onChange={(e) => setRegistrationForm(prev => ({ ...prev, email: e.target.value }))}
+                          required
+                          placeholder="your.email@example.com"
+                        />
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="regPhone">Phone *</label>
+                        <input
+                          type="tel"
+                          id="regPhone"
+                          value={registrationForm.phone}
+                          onChange={(e) => setRegistrationForm(prev => ({ ...prev, phone: e.target.value }))}
+                          required
+                          placeholder="(123) 456-7890"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Pastor-Specific Fields */}
+                  {registrationForm.userType === 'pastor' && (
+                    <div className="form-section pastor-fields">
+                      <h3>Pastoral Information</h3>
+                      <div className="form-group">
+                        <label htmlFor="ordinationStatus">Ordination Status *</label>
+                        <select
+                          id="ordinationStatus"
+                          value={registrationForm.ordinationStatus}
+                          onChange={(e) => setRegistrationForm(prev => ({ ...prev, ordinationStatus: e.target.value }))}
+                          required
+                        >
+                          <option value="">Select ordination status</option>
+                          <option value="ordained">Licensed/Ordained Pastor</option>
+                          <option value="lay">Lay Minister/Elder</option>
+                          <option value="student">Ministry Student</option>
+                          <option value="other">Other Ministry Worker</option>
+                        </select>
+                      </div>
+
+                      <div className="form-group">
+                        <label htmlFor="yearsExperience">Years of Ministry Experience *</label>
+                        <select
+                          id="yearsExperience"
+                          value={registrationForm.yearsExperience}
+                          onChange={(e) => setRegistrationForm(prev => ({ ...prev, yearsExperience: e.target.value }))}
+                          required
+                        >
+                          <option value="">Select experience level</option>
+                          <option value="0-2">0-2 years</option>
+                          <option value="3-5">3-5 years</option>
+                          <option value="6-10">6-10 years</option>
+                          <option value="11-20">11-20 years</option>
+                          <option value="20+">20+ years</option>
+                        </select>
+                      </div>
+
+                      <div className="form-group">
+                        <label>Areas of Ministry Specialization</label>
+                        <div className="specialization-options">
+                          {[
+                            'Biblical Teaching', 'Youth Ministry', 'Marriage Counseling',
+                            'Prayer Ministry', 'Womens Ministry', 'Spiritual Direction',
+                            'Community Outreach', 'Music/Worship', 'Leadership Development'
+                          ].map(spec => (
+                            <label key={spec} className="checkbox-option">
+                              <input
+                                type="checkbox"
+                                checked={registrationForm.specializations.includes(spec)}
+                                onChange={(e) => {
+                                  const specs = [...registrationForm.specializations];
+                                  if (e.target.checked) {
+                                    specs.push(spec);
+                                  } else {
+                                    const index = specs.indexOf(spec);
+                                    if (index > -1) specs.splice(index, 1);
+                                  }
+                                  setRegistrationForm(prev => ({ ...prev, specializations: specs }));
+                                }}
+                              />
+                              <span className="checkbox-label">{spec}</span>
+                            </label>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="form-group">
+                        <label htmlFor="availability">Availability for Counseling *</label>
+                        <select
+                          id="availability"
+                          value={registrationForm.availability}
+                          onChange={(e) => setRegistrationForm(prev => ({ ...prev, availability: e.target.value }))}
+                          required
+                        >
+                          <option value="">Select availability</option>
+                          <option value="weekdays">Weekdays (9 AM - 5 PM)</option>
+                          <option value="evenings">Evenings (5 PM - 9 PM)</option>
+                          <option value="weekends">Weekends</option>
+                          <option value="flexible">Flexible Schedule</option>
+                          <option value="limited">Limited Availability</option>
+                        </select>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Member-Specific Fields */}
+                  {registrationForm.userType === 'member' && (
+                    <div className="form-section member-fields">
+                      <h3>Church Membership</h3>
+                      <div className="form-group">
+                        <label htmlFor="membershipStatus">Church Membership Status</label>
+                        <select
+                          id="membershipStatus"
+                          value={registrationForm.membershipStatus}
+                          onChange={(e) => setRegistrationForm(prev => ({ ...prev, membershipStatus: e.target.value }))}
+                        >
+                          <option value="">Select membership status</option>
+                          <option value="member">Church Member</option>
+                          <option value="regular">Regular Attendee</option>
+                          <option value="visitor">First-time Visitor</option>
+                          <option value="online">Online Community Member</option>
+                        </select>
+                      </div>
+
+                      <div className="form-group">
+                        <label>Preferred Method of Communication</label>
+                        <div className="communication-options">
+                          {['Email', 'Phone', 'Text Message', 'Church App', 'In-person'].map(comm => (
+                            <label key={comm} className="radio-option">
+                              <input
+                                type="radio"
+                                name="preferredCommunication"
+                                value={comm}
+                                checked={registrationForm.preferredCommunication === comm}
+                                onChange={(e) => setRegistrationForm(prev => ({ ...prev, preferredCommunication: e.target.value }))}
+                              />
+                              <span className="radio-label">{comm}</span>
+                            </label>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="form-group">
+                        <label>Areas of Interest (Optional)</label>
+                        <div className="interest-options">
+                          {[
+                            'Bible Study', 'Prayer Groups', 'Youth Ministry', 'Womens Ministry',
+                            'Community Service', 'Music Ministry', 'Counseling Support', 'Spiritual Growth'
+                          ].map(interest => (
+                            <label key={interest} className="checkbox-option">
+                              <input
+                                type="checkbox"
+                                checked={registrationForm.interests.includes(interest)}
+                                onChange={(e) => {
+                                  const interests = [...registrationForm.interests];
+                                  if (e.target.checked) {
+                                    interests.push(interest);
+                                  } else {
+                                    const index = interests.indexOf(interest);
+                                    if (index > -1) interests.splice(index, 1);
+                                  }
+                                  setRegistrationForm(prev => ({ ...prev, interests: interests }));
+                                }}
+                              />
+                              <span className="checkbox-label">{interest}</span>
+                            </label>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Terms and Privacy */}
+                  <div className="form-section terms-section">
+                    <label className="terms-option">
+                      <input
+                        type="checkbox"
+                        required
+                      />
+                      <span className="terms-text">
+                        I agree to the church's <a href="#privacy" style={{color: '#667eea'}}>privacy policy</a> and <a href="#terms" style={{color: '#667eea'}}>terms of service</a>.
+                        {registrationForm.userType === 'pastor' &&
+                          ' I understand that my information will be used to connect me with church members seeking spiritual guidance.'
+                        }
+                        {registrationForm.userType === 'member' &&
+                          ' I understand that this registration allows me to access spiritual guidance and prayer support services.'
+                        }
+                      </span>
+                    </label>
+                  </div>
+
+                  <div className="form-actions">
+                    <button type="submit" className="register-submit-btn">
+                      {registrationForm.userType === 'pastor' ? '📝 Register as Pastor' : '🙏 Register as Member'}
+                    </button>
+                  </div>
+                </form>
+              )}
+            </div>
+
+            <div className="registration-benefits">
+              <h3>Benefits of Registration</h3>
+              <div className="benefits-grid">
+                <div className="benefit-card">
+                  <div className="benefit-icon">🙏</div>
+                  <h4>Spiritual Support</h4>
+                  <p>Access to pastoral care, prayer support, and biblical guidance whenever you need it.</p>
+                </div>
+                <div className="benefit-card">
+                  <div className="benefit-icon">👥</div>
+                  <h4>Community Connection</h4>
+                  <p>Connect with fellow believers and become part of our church family.</p>
+                </div>
+                <div className="benefit-card">
+                  <div className="benefit-icon">📚</div>
+                  <h4>Resources & Events</h4>
+                  <p>Receive updates about church events, resources, and ministry opportunities.</p>
+                </div>
+                <div className="benefit-card">
+                  <div className="benefit-icon">🔒</div>
+                  <h4>Privacy Protected</h4>
+                  <p>Your personal information is secure and will only be used for church ministry purposes.</p>
+                </div>
               </div>
             </div>
           </section>
