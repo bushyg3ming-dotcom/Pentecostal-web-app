@@ -256,7 +256,9 @@ Email: pentecostalholychurch@gmail.com
                 <h3>🎄 Christmas Youth Retreat</h3>
                 <p className="event-date">December 26-28, 2025</p>
                 <p>Join us for a special Christmas retreat filled with worship, fellowship, and celebrating Jesus' birth!</p>
-                <button className="register-btn">Register Interest</button>
+                <button className="register-btn" onClick={() => {
+                  alert('Thank you for your interest in the Christmas Youth Retreat! Registration details will be sent to your email when available. God bless you!');
+                }}>Register Interest</button>
               </div>
 
               <div className="event-card upcoming">
