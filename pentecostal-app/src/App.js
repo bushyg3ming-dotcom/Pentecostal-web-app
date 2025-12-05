@@ -1349,7 +1349,11 @@ Email: pentecostalholychurch@gmail.com
 
                       <div className="form-group">
                         <label>Event Description</label>
-                        <textarea rows="4" placeholder="Detailed description of the event..."></textarea>
+                        <textarea
+                          rows="4"
+                          placeholder="Detailed description of the event..."
+                          style={{width: '100%', resize: 'none'}}
+                        ></textarea>
                       </div>
 
                       <div className="form-group">
