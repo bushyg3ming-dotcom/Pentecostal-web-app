@@ -26,13 +26,10 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src="/logo.jpg" alt="Pentecostal Holiness Church Logo" className="logo" />
-        <h1>Pentecostal Holiness Church</h1>
-        <button className="burger" onClick={toggleMenu}>
-          <span className="bar"></span>
-          <span className="bar"></span>
-          <span className="bar"></span>
-        </button>
+        <div className="header-content">
+          <img src="/logo.jpg" alt="Pentecostal Holiness Church Logo" className="logo" />
+          <h1>Pentecostal Holiness Church</h1>
+        </div>
         <nav className={menuOpen ? 'nav-open' : ''}>
           <ul>
             <li><a href="#home" onClick={toggleMenu}>Home</a></li>
@@ -40,20 +37,49 @@ function App() {
             <li><a href="#contact" onClick={toggleMenu}>Contact</a></li>
           </ul>
         </nav>
+        <button className="burger" onClick={toggleMenu}>
+          <span className="bar"></span>
+          <span className="bar"></span>
+          <span className="bar"></span>
+        </button>
       </header>
       <main>
-        <section id="home" className="home">
-          <h2>Welcome to Our Church</h2>
-          <p>Join us in worship and fellowship as we grow in faith together.</p>
-          <blockquote className="verse">{dailyVerse}</blockquote>
+        <section id="home" className="hero">
+          <div className="hero-content">
+            <div className="cross-icon">✝</div>
+            <h2>Welcome to Our Church</h2>
+            <p>Join us in worship and fellowship as we grow in faith together.</p>
+            <button className="cta-button">Join Our Community</button>
+          </div>
         </section>
+        <div className="verse-card">
+          <blockquote className="verse">{dailyVerse}</blockquote>
+        </div>
         <section id="services" className="services">
-          <h2>Services</h2>
-          <p>Sunday Worship: 10 AM<br />Wednesday Prayer: 7 PM<br />Bible Study: Thursdays 6 PM</p>
+          <h2>Our Services</h2>
+          <div className="service-cards">
+            <div className="service-card">
+              <h3>Sunday Worship</h3>
+              <p>Join us every Sunday at 10 AM for an inspiring worship service filled with praise, prayer, and the Word of God.</p>
+            </div>
+            <div className="service-card">
+              <h3>Wednesday Prayer</h3>
+              <p>Come together in prayer every Wednesday at 7 PM to seek God's guidance and intercede for our community.</p>
+            </div>
+            <div className="service-card">
+              <h3>Bible Study</h3>
+              <p>Deepen your understanding of Scripture during our Thursday Bible Study sessions at 6 PM.</p>
+            </div>
+          </div>
         </section>
         <section id="contact" className="contact">
           <h2>Contact Us</h2>
-          <p>Address: 123 Church Street, City, State<br />Phone: (123) 456-7890<br />Email: info@pentecostalholiness.org</p>
+          <div className="contact-card">
+            <p><strong>Address:</strong> 5 Frederick Street, Davidsonville, Roodepoort, 1724</p>
+            <p><strong>Phone:</strong> (123) 456-7890</p>
+            <p><strong>Email:</strong> pentecostalholychurch@gmail.com</p>
+            <p>We'd love to hear from you! Visit us or reach out to join our faith community.</p>
+          </div>
         </section>
       </main>
       <footer>
