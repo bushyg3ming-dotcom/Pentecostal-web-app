@@ -5,6 +5,18 @@ function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState('home');
 
+  // Ask Pastor form state
+  const [pastorForm, setPastorForm] = useState({
+    selectedPastor: '',
+    requestType: '',
+    isAnonymous: false,
+    name: '',
+    email: '',
+    phone: '',
+    message: ''
+  });
+  const [formSubmitted, setFormSubmitted] = useState(false);
+
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
@@ -12,6 +24,33 @@ function App() {
   const navigateTo = (page) => {
     setCurrentPage(page);
     setMenuOpen(false);
+  };
+
+  const handleFormChange = (field, value) => {
+    setPastorForm(prev => ({
+      ...prev,
+      [field]: value
+    }));
+  };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    // In a real app, this would send the data to a backend
+    console.log('Form submitted:', pastorForm);
+    setFormSubmitted(true);
+    // Reset form after 3 seconds
+    setTimeout(() => {
+      setFormSubmitted(false);
+      setPastorForm({
+        selectedPastor: '',
+        requestType: '',
+        isAnonymous: false,
+        name: '',
+        email: '',
+        phone: '',
+        message: ''
+      });
+    }, 3000);
   };
 
   const verses = [
@@ -194,6 +233,182 @@ Email: pentecostalholychurch@gmail.com
             </div>
           </section>
         );
+      case 'ask-pastor':
+        return (
+          <section className="ask-pastor">
+            <div className="pastor-intro">
+              <h2>Ask a Pastor</h2>
+              <p>Need spiritual guidance, biblical advice, or prayer support? Our pastors are here to help you on your faith journey. You can choose to remain completely anonymous if you prefer.</p>
+            </div>
+
+            <div className="pastor-form-container">
+              {formSubmitted ? (
+                <div className="success-message">
+                  <div className="success-icon">🙏</div>
+                  <h3>Thank You for Reaching Out!</h3>
+                  <p>Your message has been sent to our pastor. {pastorForm.isAnonymous ? 'Your identity will remain anonymous.' : 'Our pastor will respond to you soon.'}</p>
+                  <p>We appreciate your trust in us and look forward to supporting you spiritually.</p>
+                </div>
+              ) : (
+                <form className="pastor-form" onSubmit={handleFormSubmit}>
+                  <div className="form-section">
+                    <h3>Choose Your Pastor</h3>
+                    <select
+                      value={pastorForm.selectedPastor}
+                      onChange={(e) => handleFormChange('selectedPastor', e.target.value)}
+                      required
+                      className="pastor-select"
+                    >
+                      <option value="">Select a Pastor</option>
+                      <option value="pastor-john">Pastor John Smith - Lead Pastor</option>
+                      <option value="pastor-mary">Pastor Mary Johnson - Associate Pastor</option>
+                      <option value="pastor-david">Pastor David Williams - Youth Pastor</option>
+                      <option value="pastor-sarah">Pastor Sarah Brown - Women's Ministry</option>
+                    </select>
+                  </div>
+
+                  <div className="form-section">
+                    <h3>Type of Request</h3>
+                    <div className="request-type-options">
+                      <label className="request-option">
+                        <input
+                          type="radio"
+                          name="requestType"
+                          value="advice"
+                          checked={pastorForm.requestType === 'advice'}
+                          onChange={(e) => handleFormChange('requestType', e.target.value)}
+                          required
+                        />
+                        <span className="option-label">📖 Biblical Advice & Guidance</span>
+                      </label>
+                      <label className="request-option">
+                        <input
+                          type="radio"
+                          name="requestType"
+                          value="prayer"
+                          checked={pastorForm.requestType === 'prayer'}
+                          onChange={(e) => handleFormChange('requestType', e.target.value)}
+                        />
+                        <span className="option-label">🙏 Prayer Request</span>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div className="form-section">
+                    <label className="privacy-option">
+                      <input
+                        type="checkbox"
+                        checked={pastorForm.isAnonymous}
+                        onChange={(e) => handleFormChange('isAnonymous', e.target.checked)}
+                      />
+                      <span className="privacy-text">
+                        🔒 Remain Anonymous
+                        <small>Check this box if you prefer to submit your request anonymously. Our pastor will not have access to your contact information.</small>
+                      </span>
+                    </label>
+                  </div>
+
+                  {!pastorForm.isAnonymous && (
+                    <div className="form-section contact-fields">
+                      <h3>Your Contact Information</h3>
+                      <div className="form-row">
+                        <div className="form-group">
+                          <label htmlFor="name">Name *</label>
+                          <input
+                            type="text"
+                            id="name"
+                            value={pastorForm.name}
+                            onChange={(e) => handleFormChange('name', e.target.value)}
+                            required={!pastorForm.isAnonymous}
+                            placeholder="Your full name"
+                          />
+                        </div>
+                        <div className="form-group">
+                          <label htmlFor="email">Email *</label>
+                          <input
+                            type="email"
+                            id="email"
+                            value={pastorForm.email}
+                            onChange={(e) => handleFormChange('email', e.target.value)}
+                            required={!pastorForm.isAnonymous}
+                            placeholder="your.email@example.com"
+                          />
+                        </div>
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="phone">Phone (Optional)</label>
+                        <input
+                          type="tel"
+                          id="phone"
+                          value={pastorForm.phone}
+                          onChange={(e) => handleFormChange('phone', e.target.value)}
+                          placeholder="(123) 456-7890"
+                        />
+                      </div>
+                    </div>
+                  )}
+
+                  <div className="form-section">
+                    <label htmlFor="message">Your Message *</label>
+                    <textarea
+                      id="message"
+                      value={pastorForm.message}
+                      onChange={(e) => handleFormChange('message', e.target.value)}
+                      required
+                      placeholder={pastorForm.requestType === 'prayer' ?
+                        "Please share your prayer request. What would you like us to pray for?" :
+                        "Share your question or situation. Our pastor will provide biblical guidance and support."
+                      }
+                      rows="6"
+                    />
+                  </div>
+
+                  <div className="form-actions">
+                    <button type="submit" className="submit-btn">
+                      📤 Send to Pastor
+                    </button>
+                    <p className="privacy-note">
+                      <small>Your privacy is important to us. {pastorForm.isAnonymous ?
+                        'Anonymous submissions are completely confidential.' :
+                        'Your contact information will only be used to respond to your inquiry.'
+                      }</small>
+                    </p>
+                  </div>
+                </form>
+              )}
+            </div>
+
+            <div className="pastor-info">
+              <h3>Meet Our Pastors</h3>
+              <div className="pastors-grid">
+                <div className="pastor-card">
+                  <div className="pastor-avatar">👨‍⚖️</div>
+                  <h4>Pastor John Smith</h4>
+                  <p className="pastor-title">Lead Pastor</p>
+                  <p className="pastor-specialty">Specializes in: Biblical Teaching, Marriage Counseling, Leadership Development</p>
+                </div>
+                <div className="pastor-card">
+                  <div className="pastor-avatar">👩‍⚖️</div>
+                  <h4>Pastor Mary Johnson</h4>
+                  <p className="pastor-title">Associate Pastor</p>
+                  <p className="pastor-specialty">Specializes in: Women's Ministry, Prayer Ministry, Spiritual Direction</p>
+                </div>
+                <div className="pastor-card">
+                  <div className="pastor-avatar">👨‍🎓</div>
+                  <h4>Pastor David Williams</h4>
+                  <p className="pastor-title">Youth Pastor</p>
+                  <p className="pastor-specialty">Specializes in: Youth Ministry, Teen Counseling, Discipleship</p>
+                </div>
+                <div className="pastor-card">
+                  <div className="pastor-avatar">👩‍💼</div>
+                  <h4>Pastor Sarah Brown</h4>
+                  <p className="pastor-title">Women's Ministry Pastor</p>
+                  <p className="pastor-specialty">Specializes in: Women's Issues, Family Ministry, Community Outreach</p>
+                </div>
+              </div>
+            </div>
+          </section>
+        );
       case 'services':
         return (
           <section id="services" className="services">
@@ -243,6 +458,7 @@ Email: pentecostalholychurch@gmail.com
             <li><a href="#home" onClick={() => navigateTo('home')}>Home</a></li>
             <li><a href="#announcements" onClick={() => navigateTo('announcements')}>Announcements</a></li>
             <li><a href="#events" onClick={() => navigateTo('events')}>Events</a></li>
+            <li><a href="#ask-pastor" onClick={() => navigateTo('ask-pastor')}>Ask a Pastor</a></li>
             <li><a href="#services" onClick={() => navigateTo('services')}>Services</a></li>
             <li><a href="#contact" onClick={() => navigateTo('contact')}>Contact</a></li>
           </ul>
