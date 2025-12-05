@@ -1038,7 +1038,7 @@ Email: pentecostalholychurch@gmail.com
                         type="checkbox"
                         required
                       />
-                      <span className="terms-text" style={{whiteSpace: 'nowrap', fontSize: '0.85em'}}>
+                      <span className="terms-text" style={{whiteSpace: 'nowrap', fontSize: '0.7em'}}>
                         I agree to the church's <a href="#privacy" style={{color: '#667eea'}}>privacy policy</a> and <a href="#terms" style={{color: '#667eea'}}>terms of service</a>.
                         {registrationForm.userType === 'pastor' &&
                           ' I understand that my information will be used to connect me with church members seeking spiritual guidance.'
