@@ -470,7 +470,7 @@ Email: pentecostalholychurch@gmail.com
                         "Share your question or situation. Our pastor will provide biblical guidance and support."
                       }
                       rows="15"
-                      style={{width: '150%', resize: 'none'}}
+                      style={{width: '120%', resize: 'none'}}
                     />
                   </div>
 
