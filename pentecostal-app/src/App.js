@@ -1472,12 +1472,6 @@ Email: pentecostalholychurch@gmail.com
                           </div>
                           <div className="control-item">
                             <label>
-                              <input type="checkbox" defaultChecked />
-                              Allow Prayer Requests
-                            </label>
-                          </div>
-                          <div className="control-item">
-                            <label>
                               <input type="checkbox" />
                               Record Service
                             </label>
@@ -1743,45 +1737,7 @@ Email: pentecostalholychurch@gmail.com
                   </div>
                 </div>
 
-                <div className="live-chat">
-                  <h3>💬 Live Prayer Requests</h3>
-                  <div className="chat-messages">
-                    <div className="chat-message">
-                      <span className="chat-user">Anonymous</span>
-                      <p>Please pray for healing for my grandmother who is in the hospital.</p>
-                      <span className="chat-time">2 min ago</span>
-                    </div>
-                    <div className="chat-message">
-                      <span className="chat-user">Sarah J.</span>
-                      <p>Thank you for today's message about faith. It spoke to my heart!</p>
-                      <span className="chat-time">5 min ago</span>
-                    </div>
-                    <div className="chat-message">
-                      <span className="chat-user">Michael D.</span>
-                      <p>Praise report: God answered our prayers for the job interview!</p>
-                      <span className="chat-time">8 min ago</span>
-                    </div>
-                  </div>
 
-                  <form className="chat-form" onSubmit={(e) => {
-                    e.preventDefault();
-                    alert('Your prayer request has been shared with our prayer team!');
-                    e.target.reset();
-                  }}>
-                    <textarea
-                      placeholder="Share a prayer request or praise report..."
-                      rows="3"
-                      required
-                    ></textarea>
-                    <div className="chat-options">
-                      <label className="anonymous-option">
-                        <input type="checkbox" />
-                        <span>Post anonymously</span>
-                      </label>
-                      <button type="submit" className="send-chat-btn">📤 Share</button>
-                    </div>
-                  </form>
-                </div>
 
                 <div className="stream-resources">
                   <h3>📚 Service Resources</h3>
