@@ -1330,6 +1330,10 @@ footer {
     grid-template-columns: 1fr;
   }
 
+  .terms-section input[type="checkbox"] {
+    transform: scale(0.64) !important;
+  }
+
   .benefits-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
