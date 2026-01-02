@@ -549,16 +549,8 @@ Email: pentecostalholychurch@gmail.com
                     setIsLoggedIn(true);
                     setCurrentPage('user-dashboard');
                   } else {
-                    setLoginSubmitted(true);
-                    setTimeout(() => {
-                      setLoginSubmitted(false);
-                      setLoginForm({
-                        userType: '',
-                        email: '',
-                        password: '',
-                        rememberMe: false
-                      });
-                    }, 3000);
+                    // Show error if no user type selected (shouldn't happen due to required validation)
+                    alert('Please select whether you are logging in as a Pastor or Church Member.');
                   }
                 }}>
 
@@ -569,7 +561,7 @@ Email: pentecostalholychurch@gmail.com
                       <label className="login-type-option">
                         <input
                           type="radio"
-                          name="loginUserType"
+                          name="userType"
                           value="pastor"
                           checked={loginForm.userType === 'pastor'}
                           onChange={(e) => setLoginForm(prev => ({ ...prev, userType: e.target.value }))}
@@ -580,7 +572,7 @@ Email: pentecostalholychurch@gmail.com
                       <label className="login-type-option">
                         <input
                           type="radio"
-                          name="loginUserType"
+                          name="userType"
                           value="member"
                           checked={loginForm.userType === 'member'}
                           onChange={(e) => setLoginForm(prev => ({ ...prev, userType: e.target.value }))}
