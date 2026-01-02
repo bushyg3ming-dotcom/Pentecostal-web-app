@@ -211,6 +211,7 @@ Email: pentecostalholychurch@gmail.com
           <>
             <section id="home" className="hero">
               <div className="hero-content">
+                <div className="crown-icon">👑</div>
                 <div className="cross-icon">✝</div>
                 <h2>Welcome to Our Church</h2>
                 <p>Join us in worship and fellowship as we grow in faith together.</p>

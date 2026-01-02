@@ -118,8 +118,16 @@ main {
   align-items: center;
 }
 
+.crown-icon {
+  font-size: 4rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  opacity: 0.9;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
 .cross-icon {
-  font-size: 5rem;
+  font-size: 6rem;
   font-weight: bold;
   margin-bottom: 1rem;
   opacity: 0.9;
@@ -423,7 +431,12 @@ footer {
   }
 
   .cross-icon {
-    font-size: 4rem;
+    font-size: 4.8rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .crown-icon {
+    font-size: 3.2rem;
     margin-bottom: 0.5rem;
   }
 
